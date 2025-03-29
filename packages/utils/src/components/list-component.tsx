@@ -8,6 +8,7 @@ type ListComponentProps = {
 export function ListComponent({
   data,
   renderItem,
+  ...props
 }: ListComponentProps & React.ComponentProps<"div">) {
-  return <div>{data.map((item) => renderItem(item))}</div>;
+  return <div {...props}>{data.map((item) => renderItem(item))}</div>;
 }
