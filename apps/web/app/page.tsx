@@ -3,15 +3,15 @@
 import * as React from "react";
 import { List } from "@/components/list";
 import { Counter } from "@/components/counter";
-import { Page } from "@/components/page";
+import { Container } from "@/components/container";
 import { Separator } from "@repo/ui/components/separator";
 
-export default function HomePage() {
+export default function Page() {
   return (
-    <Page className="flex flex-col gap-10 mt-5">
+    <Container className="flex flex-col gap-10 mt-5">
       <Counter />
       <Separator />
       <List />
-    </Page>
+    </Container>
   );
 }

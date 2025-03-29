@@ -1,4 +1,8 @@
 packages:
-  - "apps/*"
-  - "packages/*"
-nodeLinker: "hoisted"
+  - apps/*
+  - packages/*
+nodeLinker: hoisted
+ignoredBuiltDependencies:
+  - core-js-pure
+  - next-translate-plugin
+  - sharp

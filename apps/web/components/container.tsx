@@ -2,12 +2,9 @@ import React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
 
-export function Page({
+export function Container({
   children,
   className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
+}: React.PropsWithChildren & React.ComponentProps<"div">) {
   return <div className={cn("container", className)}>{children}</div>;
 }
