@@ -10,5 +10,11 @@ export function ListComponent({
   renderItem,
   ...props
 }: ListComponentProps & React.ComponentProps<"div">) {
-  return <div {...props}>{data.map((item) => renderItem(item))}</div>;
+  return (
+    <div {...props}>
+      {data.map((item, index) => (
+        <span key={index}>{renderItem(item)}</span>
+      ))}
+    </div>
+  );
 }
