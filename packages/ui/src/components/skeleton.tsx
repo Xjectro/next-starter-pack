@@ -1,7 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@repo/ui/lib/utils";
-
 const skeletonVariants = cva("bg-surface-400 animate-pulse", {
   variants: {
     shape: {
@@ -24,7 +22,7 @@ function Skeleton({
   return (
     <div
       data-slot="skeleton"
-      className={cn(skeletonVariants({ shape }), className)}
+      className={skeletonVariants({ shape, className })}
       {...props}
     />
   );

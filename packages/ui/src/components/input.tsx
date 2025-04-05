@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@repo/ui/lib/utils";
 
 const inputVariants = cva(
-  "flex cursor-pointer focus:cursor-text w-full border-none bg-surface-100 rounded-primary px-3 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-typography-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-300 disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none transition duration-400",
+  "flex cursor-pointer focus:cursor-text w-full border-none bg-surface-200 rounded-primary px-3 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-typography-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-300 disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none transition duration-400",
   {
     variants: {
       size: {
@@ -67,7 +67,7 @@ function Input({
     >
       <input
         type={type}
-        className={cn(inputVariants({ size }), className)}
+        className={inputVariants({ size, className })}
         ref={ref}
         {...props}
       />

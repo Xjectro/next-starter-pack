@@ -65,7 +65,7 @@ function CardHeader({
   return (
     <div
       data-slot="card-header"
-      className={cn(cardHeaderVariants({ orientation, align }), className)}
+      className={cardHeaderVariants({ orientation, align, className })}
       {...props}
     />
   );
@@ -106,7 +106,7 @@ function CardTitle({
   return (
     <div
       data-slot="card-title"
-      className={cn(cardTitleVariants({ size, text }), className)}
+      className={cardTitleVariants({ size, text, className })}
       {...props}
     />
   );
@@ -145,7 +145,7 @@ function CardDescription({
   return (
     <div
       data-slot="card-description"
-      className={cn(cardDescriptionVariants({ size, text }), className)}
+      className={cardDescriptionVariants({ size, text, className })}
       {...props}
     />
   );
@@ -210,7 +210,7 @@ function CardContent({
   return (
     <div
       data-slot="card-content"
-      className={cn(cardContentVariants({ orientation, align }), className)}
+      className={cardContentVariants({ orientation, align, className })}
       {...props}
     />
   );
@@ -268,7 +268,7 @@ function CardFooter({
   return (
     <div
       data-slot="card-footer"
-      className={cn(cardFooterVariants({ orientation, align }), className)}
+      className={cardFooterVariants({ orientation, align, className })}
       {...props}
     />
   );

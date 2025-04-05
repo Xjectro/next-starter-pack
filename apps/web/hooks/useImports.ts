@@ -2,7 +2,7 @@ import {
   useAppStore,
   useAppDispatch,
   useAppSelector,
-} from "@repo/utils/lib/hooks";
+} from "@repo/utils/lib/utils";
 import { useParams } from "next/navigation";
 
 export const useImports = () => {

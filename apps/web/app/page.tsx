@@ -7,6 +7,7 @@ import { Container } from "@/components/container";
 import { Separator } from "@repo/ui/components/separator";
 
 export default function Page() {
+  console.log(process.env.NEXT_PUBLIC_APP_TITLE);
   return (
     <Container className="flex flex-col gap-10 mt-5">
       <Counter />

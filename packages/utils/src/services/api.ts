@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.SERVER_URI || "https://jsonplaceholder.typicode.com",
+    baseUrl: process.env.SERVER_URI || "http://localhost:3000",
   }),
   endpoints: (builder) => {
     return {

@@ -7,7 +7,7 @@ import {
   incrementByAmount,
   incrementAsync,
   selectValue,
-} from "@repo/utils/lib/features/counter/counterSlice";
+} from "@repo/utils/stores/counterSlice";
 
 export function Counter() {
   const { dispatch, useAppSelector } = useImports();
@@ -20,7 +20,7 @@ export function Counter() {
         <Button onClick={() => dispatch(incrementAsync(10))}>
           Increment Async
         </Button>
-        <Button onClick={() => dispatch(incrementByAmount(/** 10 */))}>
+        <Button onClick={() => dispatch(incrementByAmount(5))}>
           Increment
         </Button>
         <Button onClick={() => dispatch(decrement())}>Decrement</Button>

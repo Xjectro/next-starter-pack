@@ -495,6 +495,10 @@ const sidebarMenuButtonVariants = cva(
   },
 );
 
+export type SidebarMenuButtonVariants = VariantProps<
+  typeof sidebarMenuButtonVariants
+>;
+
 function SidebarMenuButton({
   asChild = false,
   isActive = false,
@@ -507,7 +511,7 @@ function SidebarMenuButton({
   asChild?: boolean;
   isActive?: boolean;
   tooltip?: string | React.ComponentProps<typeof TooltipContent>;
-} & VariantProps<typeof sidebarMenuButtonVariants>) {
+} & SidebarMenuButtonVariants) {
   const Comp = asChild ? Slot : "button";
   const { isMobile, state } = useSidebar();
 
@@ -517,7 +521,7 @@ function SidebarMenuButton({
       data-sidebar="menu-button"
       data-size={size}
       data-active={isActive}
-      className={cn(sidebarMenuButtonVariants({ variant, size }), className)}
+      className={sidebarMenuButtonVariants({ variant, size, className })}
       {...props}
     />
   );

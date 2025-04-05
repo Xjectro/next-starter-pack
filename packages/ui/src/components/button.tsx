@@ -16,7 +16,7 @@ const buttonVariants = cva(
         outline:
           "border border-surface-300 bg-surface-100 hover:bg-surface-200 hover:ring-4 hover:ring-surface-300 hover:border-surface-500 text-typography-300 hover:text-typography-50",
         secondary:
-          "bg-surface-100 border border-surface-300 hover:bg-surface-200 text-typography-300 hover:text-typography-50",
+          "bg-surface-200 border border-surface-300 hover:bg-surface-300 text-typography-300 hover:text-typography-50",
         ghost: "hover:bg-ghost-500 hover:text-typography-50",
         link: "text-primary-500 underline-offset-4 hover:underline",
       },
@@ -24,7 +24,7 @@ const buttonVariants = cva(
         default: "px-4 py-2 has-[>svg]:px-3",
         sm: "gap-1.5 px-3 py-1.5 has-[>svg]:px-2.5",
         lg: "py-3 px-6 has-[>svg]:px-4",
-        icon: "size-10",
+        icon: "p-2",
       },
       shape: {
         circle: "rounded-full",
@@ -48,7 +48,7 @@ function Button({
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
+  ButtonVariants & {
     asChild?: boolean;
   }) {
   const Comp = asChild ? Slot : "button";
@@ -56,7 +56,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size }), className)}
       {...props}
     />
   );

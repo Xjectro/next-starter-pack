@@ -7,7 +7,12 @@
     "pnpm-lock.yaml",
     "pnpm-workspace.yaml"
   ],
-  "globalEnv": ["SERVER_URI"],
+  "globalEnv": [
+    "APP_TITLE",
+    "SERVER_URL",
+    "NEXT_PUBLIC_APP_TITLE",
+    "NEXT_PUBLIC_SERVER_URL"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

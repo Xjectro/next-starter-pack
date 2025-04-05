@@ -1,8 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@repo/ui/lib/utils";
-
 const textareaVariants = cva(
   "flex cursor-pointer focus:cursor-text w-full border-none bg-surface-100 rounded-primary p-3 placeholder:text-typography-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-300 disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none transition duration-400",
   {
@@ -37,7 +35,7 @@ function Textarea({
     <span className="relative w-full">
       <textarea
         data-slot="textarea"
-        className={cn(textareaVariants({ size }), className)}
+        className={textareaVariants({ size, className })}
         onChange={handleChange}
         {...props}
       />

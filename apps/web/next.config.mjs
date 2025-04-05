@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@repo/ui", "@repo/env"],
+  reactStrictMode: true,
+  transpilePackages: ["@repo/ui"],
+  env: {
+    SERVER_URI: process.env.SERVER_URL,
+  },
 };
 
 export default nextConfig;

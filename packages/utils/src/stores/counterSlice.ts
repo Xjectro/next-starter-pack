@@ -8,35 +8,24 @@ export interface CounterState {
   value: number;
 }
 
-const initialState: CounterState = {
+const initialState = {
   value: 0,
-};
-
-export const incrementAsync = createAsyncThunk(
-  "counter/incrementAsync",
-  async (amount: number) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return amount;
-  },
-);
+} satisfies CounterState as CounterState;
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
-  reducers: (create) => ({
-    increment: create.reducer((state) => {
+  reducers: {
+    increment: (state) => {
       state.value += 1;
-    }),
-    decrement: create.reducer((state) => {
+    },
+    decrement: (state) => {
       state.value -= 1;
-    }),
-    incrementByAmount: create.preparedReducer(
-      (amount: number = 1) => ({ payload: amount }),
-      (state, action: PayloadAction<number>) => {
-        state.value += action.payload;
-      },
-    ),
-  }),
+    },
+    incrementByAmount: (state, action: PayloadAction<number>) => {
+      state.value += action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(incrementAsync.pending, () => {
@@ -53,6 +42,14 @@ export const counterSlice = createSlice({
     selectValue: (state) => state.value,
   },
 });
+
+export const incrementAsync = createAsyncThunk(
+  "counter/incrementAsync",
+  async (amount: number) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return amount;
+  },
+);
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions;
 export const { selectValue } = counterSlice.selectors;
