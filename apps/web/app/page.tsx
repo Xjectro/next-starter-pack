@@ -9,7 +9,7 @@ import { Separator } from "@repo/ui/components/separator";
 export default function Page() {
   console.log(process.env.NEXT_PUBLIC_APP_TITLE);
   return (
-    <Container className="flex flex-col gap-10 mt-5">
+    <Container className="flex flex-col gap-10">
       <Counter />
       <Separator />
       <List />

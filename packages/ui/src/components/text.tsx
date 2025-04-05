@@ -2,13 +2,12 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@repo/ui/lib/utils";
-
 const textVariants = cva("", {
   variants: {
     variant: {
       title: "text-typography-50",
       description: "text-typography-500",
+      secondary: "text-typography-500",
     },
     size: {
       xs: "text-xs font-light",
@@ -53,10 +52,7 @@ function Text({
   const Comp = asChild ? Slot : getTag(variant);
 
   return (
-    <Comp
-      className={cn(textVariants({ variant, size, className }))}
-      {...props}
-    />
+    <Comp className={textVariants({ variant, size, className })} {...props} />
   );
 }
 

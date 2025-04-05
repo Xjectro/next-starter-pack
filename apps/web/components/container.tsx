@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
 import Head from "next/head";
 
-export function DefaultHeader() {
+export function DefaultNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -38,16 +38,16 @@ export function DefaultHeader() {
 export function Container({
   children,
   className,
-  header,
+  navbar,
   head,
 }: {
   children: React.ReactNode;
   className?: string;
-  header?: () => React.ReactNode;
+  navbar?: () => React.ReactNode;
   head?: () => React.ReactNode;
 }) {
   const DefaultHead = () => {
-    const title = "App";
+    const title = process.env.NEXT_PUBLIC_APP_TITLE;
     const description = "App Description";
     return (
       <Head>
@@ -65,13 +65,13 @@ export function Container({
   };
 
   const HeadComponent = head || DefaultHead;
-  const HeaderComponent = header || DefaultHeader;
+  const NavbarComponent = navbar || DefaultNavbar;
 
   return (
     <>
       <HeadComponent />
       <div className="flex flex-col items-center gap-10">
-        <HeaderComponent />
+        <NavbarComponent />
         <div className={cn("container mt-24 mb-44", className)}>{children}</div>
       </div>
     </>
