@@ -2,7 +2,7 @@ import {
   useAppStore,
   useAppDispatch,
   useAppSelector,
-} from "@repo/utils/lib/utils";
+} from "@repo/utils/lib/redux";
 import { useParams } from "next/navigation";
 
 export const useImports = () => {

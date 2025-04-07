@@ -33,7 +33,7 @@ export function CloudPlayer({ src }: { src: string }) {
       src={src}
       loading="lazy"
       style={{ border: "none", height: "100%", width: "100%" }}
-      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+      allow="accelerometer; gyroscope; autoplay; encrypted-media;"
       allowFullScreen={true}
     ></iframe>
   );

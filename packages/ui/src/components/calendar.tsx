@@ -32,13 +32,13 @@ function Calendar({
         table: "w-full border-collapse space-x-1",
         head_row: "flex items-center border-b pb-2",
         head_cell:
-          "text-typography-400 rounded-primary w-8 font-medium text-[0.8rem]",
+          "text-typography-400 rounded-md w-8 font-medium text-[0.8rem]",
         row: "flex w-full mt-2",
         cell: cn(
           "relative p-0 text-center text-sm [&:has([aria-selected].day-range-end)]:rounded-r-primary",
           props.mode === "range"
             ? "[&:has(>.day-range-end)]:rounded-r-primary [&:has(>.day-range-start)]:rounded-l-primary first:[&:has([aria-selected])]:rounded-l-primary last:[&:has([aria-selected])]:rounded-r-primary"
-            : "[&:has([aria-selected])]:rounded-primary",
+            : "[&:has([aria-selected])]:rounded-md",
         ),
         day: cn(
           buttonVariants({ variant: "ghost" }),

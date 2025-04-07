@@ -1,6 +1,6 @@
 "use client";
 
-import { useImports } from "@/hooks/useImports";
+import { useImports } from "@/hooks/use-imports";
 import { Button } from "@repo/ui/components/button";
 import {
   decrement,

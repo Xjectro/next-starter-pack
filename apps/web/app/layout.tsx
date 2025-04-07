@@ -1,6 +1,11 @@
 import "@repo/ui/globals.css";
 import { Providers } from "@/components/providers";
 
+export const metadata = {
+  title: process.env.NEXT_PUBLIC_APP_TITLE,
+  description: "Description",
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{

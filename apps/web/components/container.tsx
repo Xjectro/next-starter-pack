@@ -1,37 +1,79 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { cn } from "@repo/ui/lib/utils";
-import Head from "next/head";
+import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@repo/ui/components/dropdown-menu";
+import { EllipsisVerticalIcon } from "lucide-react";
+import { Button } from "@repo/ui/components/button";
+import { Text } from "@repo/ui/components/text";
+import { Navbar, NavbarContent, NavbarItem } from "@repo/ui/components/navbar";
+import { useTheme } from "next-themes";
 
 export function DefaultNavbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { setTheme, themes, theme } = useTheme();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const themeKeys = {
+    dark: "Dark Mode",
+    light: "Light Mode",
+    system: "System Theme",
+  };
 
   return (
-    <nav
-      className={cn(
-        "fixed z-50 w-full h-[66px]",
-        isScrolled ? "bg-surface-100" : "bg-transparent",
-      )}
+    <Navbar
+      shouldHideOnScroll
+      variant="floating"
+      className="max-sm:flex-col max-sm:py-5"
     >
-      <header className="container flex items-center justify-between h-full">
-        <ul>
-          <li></li>
-        </ul>
-        <ul>
-          <li></li>
-        </ul>
-        <ul></ul>
-      </header>
-    </nav>
+      <NavbarContent justify="start">
+        <NavbarItem>
+          <Link href="/">
+            <Text color="primary" variant="shiny" size="2xl">
+              {process.env.NEXT_PUBLIC_APP_TITLE}
+            </Text>
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <NavbarItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <EllipsisVerticalIcon className="size-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>Tema Modu</DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuRadioGroup
+                      value={theme}
+                      onValueChange={setTheme}
+                    >
+                      {themes.map((theme) => (
+                        <DropdownMenuRadioItem value={theme} key={theme}>
+                          {themeKeys[theme as "dark"]}
+                        </DropdownMenuRadioItem>
+                      ))}
+                    </DropdownMenuRadioGroup>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </NavbarItem>
+      </NavbarContent>
+    </Navbar>
   );
 }
 
@@ -39,41 +81,17 @@ export function Container({
   children,
   className,
   navbar,
-  head,
 }: {
   children: React.ReactNode;
   className?: string;
   navbar?: () => React.ReactNode;
-  head?: () => React.ReactNode;
 }) {
-  const DefaultHead = () => {
-    const title = process.env.NEXT_PUBLIC_APP_TITLE;
-    const description = "App Description";
-    return (
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:image" content="favicon.ico" />
-
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-      </Head>
-    );
-  };
-
-  const HeadComponent = head || DefaultHead;
   const NavbarComponent = navbar || DefaultNavbar;
 
   return (
-    <>
-      <HeadComponent />
-      <div className="flex flex-col items-center gap-10">
-        <NavbarComponent />
-        <div className={cn("container mt-24 mb-44", className)}>{children}</div>
-      </div>
-    </>
+    <div className="flex flex-col items-center gap-10">
+      <NavbarComponent />
+      <div className={cn("container mt-24 mb-44", className)}>{children}</div>
+    </div>
   );
 }

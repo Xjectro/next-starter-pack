@@ -21,7 +21,7 @@ function Command({
     <CommandPrimitive
       data-slot="command"
       className={cn(
-        "bg-surface-100 text-typography-50 flex h-full w-full flex-col overflow-hidden rounded-primary",
+        "flex flex-col h-full w-full overflow-hidden rounded-lg bg-surface-100 text-typography-50",
         className,
       )}
       {...props}
@@ -66,7 +66,7 @@ function CommandInput({
       <CommandPrimitive.Input
         data-slot="command-input"
         className={cn(
-          "placeholder:text-typography-500 flex w-full rounded-primary bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+          "placeholder:text-typography-500 flex w-full rounded-lg bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         {...props}
@@ -140,7 +140,7 @@ function CommandItem({
     <CommandPrimitive.Item
       data-slot="command-item"
       className={cn(
-        "transition-colors cursor-pointer data-[selected=true]:bg-primary-500 data-[selected=true]:text-primary-foreground font-medium relative flex items-center gap-2 rounded-primary p-2 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "transition-colors cursor-pointer data-[selected=true]:bg-primary-500 data-[selected=true]:text-primary-foreground font-medium relative flex items-center gap-2 rounded-md p-2 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}

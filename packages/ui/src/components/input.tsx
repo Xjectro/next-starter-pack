@@ -4,10 +4,8 @@ import * as React from "react";
 import { useMotionTemplate, useMotionValue, motion } from "motion/react";
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@repo/ui/lib/utils";
-
 const inputVariants = cva(
-  "flex cursor-pointer focus:cursor-text w-full border-none bg-surface-200 rounded-primary px-3 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-typography-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-300 disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none transition duration-400",
+  "flex cursor-pointer focus:cursor-text w-full border-none bg-surface-200 rounded-lg px-3 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-typography-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface-300 disabled:cursor-not-allowed disabled:opacity-50 group-hover/input:shadow-none transition duration-400",
   {
     variants: {
       size: {
@@ -63,7 +61,7 @@ function Input({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="w-full p-[2px] rounded-primary transition duration-300 group/input"
+      className="w-full p-[2px] rounded-lg transition duration-300 group/input"
     >
       <input
         type={type}
