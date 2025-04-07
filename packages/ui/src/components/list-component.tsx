@@ -9,11 +9,11 @@ const listComponentVariants = cva("", {
     variant: {
       scroll: "flex items-center",
       grid: "grid",
-      flex: "flex flex-wrap",
+      wrap: "flex flex-wrap",
     },
   },
   defaultVariants: {
-    variant: "flex",
+    variant: "wrap",
   },
 });
 
