@@ -20,13 +20,9 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
     "axios": "^1.8.3",
-    "js-cookie": "^3.0.5",
     "next-redux-wrapper": "^8.1.0",
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "zustand": "^5.0.3"
-  },
-  "devDependencies": {
-    "@types/js-cookie": "^3.0.6"
   }
 }

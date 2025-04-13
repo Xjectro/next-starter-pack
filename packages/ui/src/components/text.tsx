@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
@@ -81,6 +79,9 @@ export const textVariants = cva("", {
 
 export type TextVariants = VariantProps<typeof textVariants>;
 
+type TextProps = React.ComponentProps<React.ElementType> &
+  TextVariants & { asChild?: boolean; as?: React.ElementType };
+
 export function Text({
   className,
   variant,
@@ -89,9 +90,10 @@ export function Text({
   align,
   leading,
   asChild = false,
+  as,
   ...props
-}: React.ComponentProps<"span"> & TextVariants & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "span";
+}: TextProps) {
+  const Comp = asChild ? Slot : as || "span";
 
   return (
     <Comp
