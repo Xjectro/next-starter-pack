@@ -1,6 +1,7 @@
 packages:
   - apps/*
   - packages/*
+  - pipelines/*
 nodeLinker: hoisted
 ignoredBuiltDependencies:
   - core-js-pure

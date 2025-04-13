@@ -3,10 +3,10 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Search } from "lucide-react";
-import { buttonVariants } from "@repo/ui/components/button";
+import { buttonVariants } from "@repo/ui/components/Button";
 
 export const searchInputVariants = cva(
-  "transition-all flex items-center gap-3 rounded-lg bg-surface-200 hover:bg-surface-300 focus-visible:border-primary-500 border border-surface-300",
+  "transition-all flex items-center w-full gap-3 rounded-lg bg-surface-200 hover:bg-surface-300 focus-visible:border-solid-500 border border-surface-300",
   {
     variants: {
       size: {

@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
+import { Text } from "@repo/ui/components/Text";
 import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@repo/ui/lib/utils";
@@ -23,7 +24,10 @@ function NavigationMenu({
       )}
       {...props}
     >
-      {children}
+      <NavigationMenuList>
+        {children}
+        <NavigationMenuIndicator />
+      </NavigationMenuList>
       {viewport && <NavigationMenuViewport />}
     </NavigationMenuPrimitive.Root>
   );
@@ -59,7 +63,7 @@ function NavigationMenuItem({
 }
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex w-max items-center justify-center rounded-lg bg-transparent px-4 py-2 text-sm font-medium transition-color hover:bg-ghost-500 hover:text-ghost-foreground focus:bg-ghost-600 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-ghost-300 data-[state=open]:text-ghost-foreground focus-visible:outline-1",
+  "group inline-flex w-max items-center justify-center rounded-lg bg-transparent cursor-pointer px-4 py-2 text-sm font-medium transition-color hover:bg-ghost-500 hover:text-ghost-foreground focus:bg-ghost-600 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:bg-ghost-300 data-[state=open]:text-ghost-foreground focus-visible:outline-1",
 );
 
 function NavigationMenuTrigger({
@@ -112,7 +116,7 @@ function NavigationMenuViewport({
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "origin-top-center bg-surface-100 border border-surface-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+          "origin-top-center transition-all duration-0 bg-surface-100 border !border-surface-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
           className,
         )}
         {...props}
@@ -145,13 +149,45 @@ function NavigationMenuIndicator({
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
       className={cn(
-        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+        "transition-all data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
         className,
       )}
       {...props}
     >
-      <div className="bg-surface-300 relative top-[60%] h-2 w-2 rotate-45 rounded-tl-primary shadow-md" />
+      <div className="bg-surface-100 relative top-[60%] h-2 w-2 rotate-45 rounded-tl-solid shadow-md" />
     </NavigationMenuPrimitive.Indicator>
+  );
+}
+
+function NavigationMenuListItem({
+  className,
+  title,
+  children,
+  icon,
+  ...props
+}: React.ComponentProps<"a"> & { icon: React.ReactNode }) {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          className={cn(
+            "flex items-center gap-5 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-ghost-500 hover:text-ghost-foreground focus:bg-ghost-500 focus:text-ghost-foreground",
+            className,
+          )}
+          {...props}
+        >
+          {icon}
+          <div className="flex flex-col items-start gap-y-1">
+            <Text size="sm" className="leading-none">
+              {title}
+            </Text>
+            <Text size="sm" color="muted" className="line-clamp-2 leading-snug">
+              {children}
+            </Text>
+          </div>
+        </a>
+      </NavigationMenuLink>
+    </li>
   );
 }
 
@@ -165,4 +201,5 @@ export {
   NavigationMenuIndicator,
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
+  NavigationMenuListItem,
 };

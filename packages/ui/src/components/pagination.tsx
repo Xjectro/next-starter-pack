@@ -4,16 +4,128 @@ import {
   ChevronRightIcon,
   MoreHorizontalIcon,
 } from "lucide-react";
-
 import { cn } from "@repo/ui/lib/utils";
-import { Button, buttonVariants } from "@repo/ui/components/button";
+import { Button, buttonVariants } from "@repo/ui/components/Button";
+
+interface AutoPaginationProps {
+  totalPages: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}
+
+export function AutoPagination({
+  totalPages,
+  currentPage,
+  onPageChange,
+}: AutoPaginationProps) {
+  const handlePageChange = React.useCallback(
+    (page: number) => {
+      if (page < 1 || page > totalPages || page === currentPage) return;
+      onPageChange(page);
+    },
+    [currentPage, onPageChange, totalPages],
+  );
+
+  const getPageNumbers = React.useMemo(() => {
+    const siblingCount = 1;
+    const range = (start: number, end: number) => {
+      return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    };
+
+    const totalPageNumbers = siblingCount * 2 + 3;
+
+    if (totalPageNumbers >= totalPages) {
+      return range(1, totalPages);
+    }
+
+    const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
+    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPages);
+
+    const shouldShowLeftDots = leftSiblingIndex > 2;
+    const shouldShowRightDots = rightSiblingIndex < totalPages - 1;
+
+    const firstPageIndex = 1;
+    const lastPageIndex = totalPages;
+
+    if (!shouldShowLeftDots && shouldShowRightDots) {
+      const leftItemCount = 3 + 2 * siblingCount;
+      return [...range(1, leftItemCount), "rightEllipsis", totalPages];
+    }
+
+    if (shouldShowLeftDots && !shouldShowRightDots) {
+      const rightItemCount = 3 + 2 * siblingCount;
+      return [
+        firstPageIndex,
+        "leftEllipsis",
+        ...range(totalPages - rightItemCount + 1, totalPages),
+      ];
+    }
+
+    if (shouldShowLeftDots && shouldShowRightDots) {
+      return [
+        firstPageIndex,
+        "leftEllipsis",
+        ...range(leftSiblingIndex, rightSiblingIndex),
+        "rightEllipsis",
+        lastPageIndex,
+      ];
+    }
+
+    return [];
+  }, [currentPage, totalPages]);
+
+  if (totalPages <= 1) return null;
+
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            onClick={(e) => {
+              e.preventDefault();
+              handlePageChange(currentPage - 1);
+            }}
+            disabled={currentPage === 1}
+          />
+        </PaginationItem>
+
+        {getPageNumbers.map((pageNumber, index) => (
+          <PaginationItem key={index}>
+            {pageNumber === "leftEllipsis" || pageNumber === "rightEllipsis" ? (
+              <PaginationEllipsis />
+            ) : (
+              <PaginationLink
+                onClick={(e) => {
+                  e.preventDefault();
+                  handlePageChange(pageNumber as number);
+                }}
+                isActive={pageNumber === currentPage}
+              >
+                {pageNumber}
+              </PaginationLink>
+            )}
+          </PaginationItem>
+        ))}
+
+        <PaginationItem>
+          <PaginationNext
+            onClick={(e) => {
+              e.preventDefault();
+              handlePageChange(currentPage + 1);
+            }}
+            disabled={currentPage === totalPages}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  );
+}
 
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
       role="navigation"
       aria-label="pagination"
-      data-slot="pagination"
       className={cn("mx-auto flex w-full justify-center", className)}
       {...props}
     />
@@ -26,7 +138,6 @@ function PaginationContent({
 }: React.ComponentProps<"ul">) {
   return (
     <ul
-      data-slot="pagination-content"
       className={cn("flex flex-row items-center gap-1", className)}
       {...props}
     />
@@ -34,67 +145,42 @@ function PaginationContent({
 }
 
 function PaginationItem({ ...props }: React.ComponentProps<"li">) {
-  return <li data-slot="pagination-item" {...props} />;
+  return <li {...props} />;
 }
 
-type PaginationLinkProps = {
+interface PaginationLinkProps
+  extends React.ComponentProps<typeof Button>,
+    React.PropsWithChildren {
   isActive?: boolean;
-} & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">;
+}
 
-function PaginationLink({
-  className,
-  isActive,
-  size = "icon",
-  ...props
-}: PaginationLinkProps) {
+function PaginationLink({ isActive = false, ...props }: PaginationLinkProps) {
   return (
-    <a
+    <Button
       aria-current={isActive ? "page" : undefined}
-      data-slot="pagination-link"
-      data-active={isActive}
+      variant={isActive ? "solid" : "ghost"}
       className={cn(
-        buttonVariants({
-          variant: isActive ? "default" : "ghost",
-          size,
-        }),
-        isActive ? "font-bold" : "font-medium",
-        className,
+        "font-medium pointer-events-auto aria-[current=page]:font-bold aria-[current=page]:pointer-events-none",
       )}
+      size="icon"
       {...props}
     />
   );
 }
 
-function PaginationPrevious({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+function PaginationPrevious(
+  props: React.ComponentProps<typeof PaginationLink>,
+) {
   return (
-    <PaginationLink
-      aria-label="Go to previous page"
-      size="md"
-      className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
-      {...props}
-    >
+    <PaginationLink aria-label="Go to previous page" {...props}>
       <ChevronLeftIcon />
-      <span className="hidden sm:block">Previous</span>
     </PaginationLink>
   );
 }
 
-function PaginationNext({
-  className,
-  ...props
-}: React.ComponentProps<typeof PaginationLink>) {
+function PaginationNext(props: React.ComponentProps<typeof PaginationLink>) {
   return (
-    <PaginationLink
-      aria-label="Go to next page"
-      size="md"
-      className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
-      {...props}
-    >
-      <span className="hidden sm:block">Next</span>
+    <PaginationLink aria-label="Go to next page" {...props}>
       <ChevronRightIcon />
     </PaginationLink>
   );
@@ -107,22 +193,10 @@ function PaginationEllipsis({
   return (
     <span
       aria-hidden
-      data-slot="pagination-ellipsis"
-      className={cn("flex items-center justify-center size-9", className)}
+      className={buttonVariants({ variant: "ghost", size: "icon", className })}
       {...props}
     >
-      <MoreHorizontalIcon className="size-5" />
-      <span className="sr-only">More pages</span>
+      <MoreHorizontalIcon />
     </span>
   );
 }
-
-export {
-  Pagination,
-  PaginationContent,
-  PaginationLink,
-  PaginationItem,
-  PaginationPrevious,
-  PaginationNext,
-  PaginationEllipsis,
-};

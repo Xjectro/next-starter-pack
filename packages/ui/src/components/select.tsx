@@ -5,7 +5,7 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react";
 
 import { cn } from "@repo/ui/lib/utils";
-import { buttonVariants, ButtonVariants } from "@repo/ui/components/button";
+import { buttonVariants, ButtonVariants } from "@repo/ui/components/Button";
 
 function Select({
   ...props
@@ -38,7 +38,7 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        buttonVariants({ variant: "secondary" }),
+        buttonVariants({ variant: "soft" }),
         "flex items-center justify-between w-fit gap-2 outline-none data-[placeholder]:text-typography-500 whitespace-nowrap *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}

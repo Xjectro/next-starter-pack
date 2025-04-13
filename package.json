@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "dotenv turbo build",
-    "dev": "dotenv turbo dev",
+    "build": "dotenv -e .env.prod -- turbo build",
+    "dev": "dotenv -e .env.dev -- turbo dev",
+    "start": "dotenv -e .env.prod -- turbo start",
+    "publish": "dotenv -e .env.publish -- turbo publish",
     "lint": "turbo lint",
     "check-types": "turbo check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md,css,json,js,mjs}\""

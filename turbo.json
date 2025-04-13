@@ -30,8 +30,23 @@
       "cache": false
     },
     "dev": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": ["*"],
       "cache": false,
       "persistent": true
+    },
+    "publish": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": ["*"],
+      "cache": false
+    },
+    "start": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": ["*"],
+      "cache": false
     }
   }
 }

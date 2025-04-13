@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 
 import { cn } from "@repo/ui/lib/utils";
-import { buttonVariants } from "@repo/ui/components/button";
+import { buttonVariants } from "@repo/ui/components/Button";
 
 function Calendar({
   className,
@@ -35,9 +35,9 @@ function Calendar({
           "text-typography-400 rounded-md w-8 font-medium text-[0.8rem]",
         row: "flex w-full mt-2",
         cell: cn(
-          "relative p-0 text-center text-sm [&:has([aria-selected].day-range-end)]:rounded-r-primary",
+          "relative p-0 text-center text-sm [&:has([aria-selected].day-range-end)]:rounded-r-lg",
           props.mode === "range"
-            ? "[&:has(>.day-range-end)]:rounded-r-primary [&:has(>.day-range-start)]:rounded-l-primary first:[&:has([aria-selected])]:rounded-l-primary last:[&:has([aria-selected])]:rounded-r-primary"
+            ? "[&:has(>.day-range-end)]:rounded-r-lg [&:has(>.day-range-start)]:rounded-l-lg first:[&:has([aria-selected])]:rounded-l-lg last:[&:has([aria-selected])]:rounded-r-lg"
             : "[&:has([aria-selected])]:rounded-md",
         ),
         day: cn(
@@ -45,15 +45,15 @@ function Calendar({
           "size-8 p-0 font-normal aria-selected:opacity-100",
         ),
         day_range_start:
-          "day-range-start aria-selected:bg-primary-500 aria-selected:text-primary-foreground",
+          "day-range-start aria-selected:bg-solid-500 aria-selected:text-solid-foreground",
         day_range_end:
-          "day-range-end aria-selected:bg-primary-500 aria-selected:text-primary-foreground",
+          "day-range-end aria-selected:bg-solid-500 aria-selected:text-solid-foreground",
         day_selected:
-          "bg-primary-500 text-primary-foreground hover:bg-primary-500 hover:text-primary-foreground focus:bg-primary-500 focus:text-primary-foreground",
+          "bg-solid-500 text-solid-foreground hover:bg-solid-500 hover:text-solid-foreground focus:bg-solid-500 focus:text-solid-foreground",
         day_today: "bg-surface-400 text-typography-50",
         day_outside:
           "day-outside text-typography-500 aria-selected:text-typography-500",
-        day_disabled: "text-destructive-500/50 pointer-events-none",
+        day_disabled: "text-danger-500/50 pointer-events-none",
         day_range_middle:
           "aria-selected:bg-surface-300 aria-selected:text-typography-50",
         day_hidden: "invisible",

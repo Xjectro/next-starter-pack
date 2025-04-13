@@ -1,0 +1,26 @@
+{
+  "name": "@pipelines/publish",
+  "module": "src/index",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "publish": "pnpm exec tsx ./src/index.ts",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@types/p-limit": "^2.2.0",
+    "@types/ssh2": "^1.15.4",
+    "@types/ssh2-sftp-client": "^9.0.4",
+    "colors": "^1.4.0",
+    "dotenv": "^16.4.7",
+    "p-limit": "^6.2.0",
+    "path": "^0.12.7",
+    "ssh2": "^1.16.0",
+    "ssh2-sftp-client": "^11.0.0",
+    "tsx": "^4.19.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4"
+  }
+}

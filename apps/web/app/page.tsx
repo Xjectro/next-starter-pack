@@ -1,10 +1,10 @@
 "use client";
 
 import * as React from "react";
-import { List } from "@/components/list";
-import { Counter } from "@/components/counter";
-import { Container } from "@/components/container";
-import { Separator } from "@repo/ui/components/separator";
+import { List } from "@/components/List";
+import { Counter } from "@/components/Counter";
+import { Container } from "@/components/Container";
+import { Separator } from "@repo/ui/components";
 
 export default function Page() {
   return (

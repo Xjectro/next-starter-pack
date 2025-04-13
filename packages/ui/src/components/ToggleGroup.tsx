@@ -7,11 +7,11 @@ import { cn } from "@repo/ui/lib/utils";
 import {
   toggleVariants,
   type ToggleVariants,
-} from "@repo/ui/components/toggle";
+} from "@repo/ui/components/Toggle";
 
 const ToggleGroupContext = React.createContext<ToggleVariants>({
-  size: "default",
-  variant: "default",
+  size: "solid",
+  variant: "solid",
 });
 
 function ToggleGroup({
@@ -58,7 +58,7 @@ function ToggleGroupItem({
           variant: context.variant || variant,
           size: context.size || size,
         }),
-        "min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-primary last:rounded-r-primary focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
+        "min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-solid last:rounded-r-lg focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
         className,
       )}
       {...props}

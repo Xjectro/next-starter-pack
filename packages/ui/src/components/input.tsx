@@ -53,7 +53,7 @@ function Input({
         background: useMotionTemplate`
         radial-gradient(
           ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
-          var(--primary-500),
+          var(--color-solid-500),
           transparent 80%
         )
       `,

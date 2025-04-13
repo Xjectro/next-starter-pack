@@ -3,6 +3,12 @@ import React from "react";
 import { cn } from "@repo/ui/lib/utils";
 import Link from "next/link";
 import {
+  Button,
+  Navbar,
+  NavbarContent,
+  NavbarItem,
+  Text,
+  Spinner,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuPortal,
@@ -12,11 +18,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@repo/ui/components/dropdown-menu";
+} from "@repo/ui/components";
 import { EllipsisVerticalIcon } from "lucide-react";
-import { Button } from "@repo/ui/components/button";
-import { Text } from "@repo/ui/components/text";
-import { Navbar, NavbarContent, NavbarItem } from "@repo/ui/components/navbar";
 import { useTheme } from "next-themes";
 
 export function DefaultNavbar() {
@@ -37,7 +40,7 @@ export function DefaultNavbar() {
       <NavbarContent justify="start">
         <NavbarItem>
           <Link href="/">
-            <Text color="primary" variant="shiny" size="2xl">
+            <Text color="solid" variant="shiny" size="2xl">
               {process.env.NEXT_PUBLIC_APP_TITLE}
             </Text>
           </Link>
@@ -74,6 +77,14 @@ export function DefaultNavbar() {
         </NavbarItem>
       </NavbarContent>
     </Navbar>
+  );
+}
+
+export function DefaultPreloadPage() {
+  return (
+    <div className="flex items-center justify-center w-screen h-screen">
+      <Spinner size="lg" />
+    </div>
   );
 }
 

@@ -14,7 +14,7 @@ import {
 } from "react-hook-form";
 
 import { cn } from "@repo/ui/lib/utils";
-import { Label } from "@repo/ui/components/label";
+import { Label } from "@repo/ui/components/Label";
 
 const Form = FormProvider;
 
@@ -97,7 +97,7 @@ function FormLabel({
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-destructive-500", className)}
+      className={cn("data-[error=true]:text-danger-500", className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -148,7 +148,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn("text-destructive-500 text-sm", className)}
+      className={cn("text-danger-500 text-sm", className)}
       {...props}
     >
       {body}

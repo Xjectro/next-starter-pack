@@ -6,10 +6,7 @@ import {
   useCreatePostMutation,
   useGetPostsQuery,
 } from "@repo/utils/services/api";
-import { Skeleton } from "@repo/ui/components/skeleton";
-import { Button } from "@repo/ui/components/button";
-import { Input } from "@repo/ui/components/input";
-import { Separator } from "@repo/ui/components/separator";
+import { Separator, Input, Button, Skeleton } from "@repo/ui/components";
 
 export function List() {
   const [title, setTitle] = React.useState("");
@@ -28,7 +25,7 @@ export function List() {
         onChange={(v) => setTitle(v.target.value)}
         placeholder="Hello !!"
       />
-      <Button onClick={() => createPostMutation({ title })}>
+      <Button size="lg" onClick={() => createPostMutation({ title })}>
         {isCreatingPost ? "Creating..." : "Create Post"}
       </Button>
       <Separator />

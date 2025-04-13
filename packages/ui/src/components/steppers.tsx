@@ -9,9 +9,9 @@ import React, {
 } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { cn } from "@repo/ui/lib/utils";
-import { PenIcon, CheckIcon } from "@repo/ui/components/icons";
+import { PenIcon, CheckIcon } from "@repo/ui/components/Icons";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
-import { Button } from "@repo/ui/components/button";
+import { Button } from "@repo/ui/components/Button";
 
 interface StepperProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
@@ -114,7 +114,7 @@ export function Steppers({
               )}
             >
               {value !== 1 && (
-                <Button variant="secondary" size="md" onClick={handleBack}>
+                <Button variant="soft" size="md" onClick={handleBack}>
                   <ArrowLeftIcon />
                 </Button>
               )}
@@ -242,13 +242,13 @@ function StepIndicator({
           },
           active: {
             scale: 1,
-            backgroundColor: "var(--color-primary-500)",
-            color: "var(--color-primary-foreground)",
+            backgroundColor: "var(--color-solid-500)",
+            color: "var(--color-solid-foreground)",
           },
           complete: {
             scale: 1,
-            backgroundColor: "var(--color-primary-500)",
-            color: "var(--color-primary-foreground)",
+            backgroundColor: "var(--color-solid-500)",
+            color: "var(--color-solid-foreground)",
           },
         }}
         transition={{ duration: 0.3 }}
@@ -274,7 +274,7 @@ function StepConnector({ isComplete }: { isComplete: boolean }) {
           incomplete: { width: 0, backgroundColor: "var(--color-surface-500)" },
           complete: {
             width: "100%",
-            backgroundColor: "var(--color-primary-500)",
+            backgroundColor: "var(--color-solid-500)",
           },
         }}
         initial={false}

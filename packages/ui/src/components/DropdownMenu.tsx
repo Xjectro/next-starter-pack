@@ -63,11 +63,11 @@ function DropdownMenuGroup({
 function DropdownMenuItem({
   className,
   inset,
-  variant = "default",
+  variant = "solid",
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean;
-  variant?: "default" | "destructive";
+  variant?: "solid" | "danger";
 }) {
   return (
     <DropdownMenuPrimitive.Item
@@ -75,7 +75,7 @@ function DropdownMenuItem({
       data-inset={inset}
       data-variant={variant}
       className={cn(
-        "transition-colors focus:bg-ghost-500 data-[variant=destructive]:text-destructive-300 data-[variant=destructive]:focus:bg-destructive-500/20 relative flex cursor-pointer items-center gap-2 rounded-md p-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "transition-colors focus:bg-ghost-500 data-[variant=danger]:text-danger-300 data-[variant=danger]:focus:bg-danger-500/20 relative flex cursor-pointer items-center gap-2 rounded-md p-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
@@ -93,7 +93,7 @@ function DropdownMenuCheckboxItem({
     <DropdownMenuPrimitive.CheckboxItem
       data-slot="dropdown-menu-checkbox-item"
       className={cn(
-        "transition-colors focus:bg-ghost-500 relative flex cursor-pointer items-center gap-2 rounded-md py-2 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:text-primary-500 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "transition-colors focus:bg-ghost-500 relative flex cursor-pointer items-center gap-2 rounded-md py-2 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:text-solid-500 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       checked={checked}
@@ -129,7 +129,7 @@ function DropdownMenuRadioItem({
     <DropdownMenuPrimitive.RadioItem
       data-slot="dropdown-menu-radio-item"
       className={cn(
-        "transition-colors focus:bg-ghost-500 relative flex items-center gap-2 rounded-md py-2 pr-2 pl-8 text-sm outline-hidden select-none cursor-pointer data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:text-primary-500 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "transition-colors focus:bg-ghost-500 relative flex items-center gap-2 rounded-md py-2 pr-2 pl-8 text-sm outline-hidden select-none cursor-pointer data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:text-solid-500 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}

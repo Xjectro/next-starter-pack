@@ -1,21 +1,22 @@
-"use client";
-
 import React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@repo/ui/lib/utils";
+import { useWindowScroll } from "react-use";
+
+export const NAVBAR_HEIGHT = 66;
+export const FLOATING_MARGIN = 20;
 
 const navbarVariants = cva(
-  "transition-all duration-300 flex h-auto sm:h-[66px] gap-5 px-5 data-[visible=false]:-translate-y-full data-[visible=true]:translate-y-0 data-[visible=false]:opacity-0 data-[visible=true]:opacity-100 data-[scrolled=false]:bg-transparent data-[scrolled=false]:backdrop-blur-xl data-[scrolled=true]:bg-surface-100",
+  "flex items-center gap-5 backdrop-blur-xl will-change-transform",
   {
     variants: {
       position: {
         default: "fixed top-0 z-50",
-        static: "static",
+        static: "z-10",
       },
       variant: {
-        default: "w-full border-b !border-surface-300",
-        floating:
-          "w-[90vw] md:w-[80vw] lg:w-[60vw] mt-5 rounded-xl border !border-surface-300",
+        default: "w-full border-b",
+        floating: "px-5 w-[90vw] md:w-[80vw] lg:w-[60vw] rounded-xl border",
       },
     },
     defaultVariants: {
@@ -29,44 +30,80 @@ export type NavbarVariants = VariantProps<typeof navbarVariants>;
 
 interface NavbarProps extends NavbarVariants, React.ComponentProps<"nav"> {
   shouldHideOnScroll?: boolean;
+  isBackground?: boolean;
 }
 
 export function Navbar({
   position,
-  variant,
+  variant = "default",
   shouldHideOnScroll = false,
+  isBackground = false,
   className,
+  children,
   ...props
 }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [isVisible, setIsVisible] = React.useState(true);
-  const lastScrollY = React.useRef(0);
+  const { y: scrollY } = useWindowScroll();
+  const [beforeScrollY, setBeforeScrollY] = React.useState(scrollY);
+  const [yPosition, setYPosition] = React.useState(0);
+
+  const maxOffset =
+    variant === "floating" ? NAVBAR_HEIGHT + FLOATING_MARGIN : NAVBAR_HEIGHT;
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 1);
+    if (!shouldHideOnScroll || position === "static") return;
 
-      if (shouldHideOnScroll) {
-        if (window.scrollY > lastScrollY.current) {
-          setIsVisible(false);
-        } else {
-          setIsVisible(true);
-        }
-        lastScrollY.current = window.scrollY;
-      }
-    };
+    const delta = scrollY - beforeScrollY;
+    const newYPosition = Math.min(Math.max(0, yPosition + delta), maxOffset);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [shouldHideOnScroll]);
+    setBeforeScrollY(scrollY);
+    setYPosition(newYPosition);
+  }, [
+    shouldHideOnScroll,
+    position,
+    scrollY,
+    maxOffset,
+    beforeScrollY,
+    yPosition,
+  ]);
+
+  const content =
+    variant === "default" ? (
+      <div
+        className={cn(
+          "container flex items-center w-full h-full gap-5",
+          className,
+        )}
+      >
+        {children}
+      </div>
+    ) : (
+      children
+    );
+
+  const opacity = isBackground ? 1 - yPosition / maxOffset : 1;
 
   return (
     <nav
-      data-visible={isVisible}
-      data-scrolled={isScrolled}
-      className={navbarVariants({ position, variant, className })}
+      style={{
+        backgroundColor: isBackground
+          ? `oklch(var(--surface-100) / ${opacity})`
+          : "transparent",
+        borderColor: isBackground
+          ? `oklch(var(--surface-300) / ${opacity})`
+          : "transparent",
+        transform: `translateY(-${yPosition}px)`,
+        minHeight: NAVBAR_HEIGHT,
+        marginTop: variant === "floating" ? `${FLOATING_MARGIN}px` : "0px",
+      }}
+      className={navbarVariants({
+        position,
+        variant,
+        className: variant === "default" ? undefined : className,
+      })}
       {...props}
-    />
+    >
+      {content}
+    </nav>
   );
 }
 
@@ -83,7 +120,7 @@ export function NavbarContent({
     <ul
       data-justify={justify}
       className={cn(
-        "flex flex-row items-center w-full gap-5 h-full data-[justify=start]:justify-start data-[justify=center]:justify-center data-[justify=end]:justify-end",
+        "flex flex-row items-center w-full h-full gap-5 data-[justify=start]:justify-start data-[justify=center]:justify-center data-[justify=end]:justify-end",
         className,
       )}
       {...props}
@@ -91,6 +128,9 @@ export function NavbarContent({
   );
 }
 
-export function NavbarItem(props: React.ComponentProps<"li">) {
-  return <li {...props} />;
+export function NavbarItem({
+  className,
+  ...props
+}: React.ComponentProps<"li">) {
+  return <li className={cn("flex items-center gap-2", className)} {...props} />;
 }

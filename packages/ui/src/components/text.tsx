@@ -13,7 +13,12 @@ export const textVariants = cva("", {
     color: {
       foreground: "text-typography-50",
       muted: "text-typography-500",
-      primary: "text-primary-500",
+      solid: "text-solid-500",
+    },
+    align: {
+      start: "text-start",
+      center: "text-center",
+      end: "text-end",
     },
     size: {
       xs: "text-xs font-light",
@@ -28,16 +33,36 @@ export const textVariants = cva("", {
       "5xl": "text-5xl font-bold",
       "6xl": "text-6xl font-bold",
     },
+    "line-clamp": {
+      none: "line-clamp-none",
+      "1": "line-clamp-1",
+      "2": "line-clamp-2",
+      "3": "line-clamp-3",
+      "4": "line-clamp-4",
+      "5": "line-clamp-5",
+      "6": "line-clamp-6",
+    },
+    leading: {
+      "0": "leading-0",
+      snug: "leading-snug",
+    },
+    break: {
+      all: "break-all",
+      keep: "break-keep",
+      normal: "break-normal",
+      words: "break-words",
+    },
   },
   defaultVariants: {
     color: "foreground",
+    align: "start",
   },
   compoundVariants: [
     {
       variant: "shiny",
-      color: "primary",
+      color: "solid",
       className:
-        "bg-primary-500 bg-[linear-gradient(120deg,transparent_30%,var(--color-primary-800)_45%,transparent_60%)]",
+        "bg-solid-500 bg-[linear-gradient(120deg,transparent_30%,var(--color-solid-800)_45%,transparent_60%)]",
     },
     {
       variant: "shiny",
@@ -61,6 +86,8 @@ export function Text({
   variant,
   size,
   color,
+  align,
+  leading,
   asChild = false,
   ...props
 }: React.ComponentProps<"span"> & TextVariants & { asChild?: boolean }) {
@@ -68,7 +95,15 @@ export function Text({
 
   return (
     <Comp
-      className={textVariants({ color, variant, size, className })}
+      className={textVariants({
+        color,
+        variant,
+        leading,
+        size,
+        className,
+        align,
+        ...props,
+      })}
       {...props}
     />
   );

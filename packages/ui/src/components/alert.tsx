@@ -8,13 +8,13 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-surface-100 text-typography-50",
-        destructive:
-          "text-destructive-500 bg-surface-100 [&>svg]:text-current *:data-[slot=alert-description]:text-destructive-500/90",
+        solid: "bg-surface-100 text-typography-50",
+        danger:
+          "text-danger-500 bg-surface-100 [&>svg]:text-current *:data-[slot=alert-description]:text-danger-500/90",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "solid",
     },
   },
 );
