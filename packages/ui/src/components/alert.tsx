@@ -8,7 +8,8 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        solid: "bg-surface-100 text-typography-50",
+        soft: "bg-surface-100 text-typography-50",
+        solid: "bg-solid-500 text-solid-foreground",
         danger:
           "text-danger-500 bg-surface-100 [&>svg]:text-current *:data-[slot=alert-description]:text-danger-500/90",
       },
