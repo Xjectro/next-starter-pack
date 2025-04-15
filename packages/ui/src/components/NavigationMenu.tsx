@@ -181,7 +181,7 @@ function NavigationMenuListItem({
             <Text size="sm" className="leading-none">
               {title}
             </Text>
-            <Text size="sm" color="muted" className="line-clamp-2 leading-snug">
+            <Text size="sm" color="muted" lineClamp={2} leading="snug">
               {children}
             </Text>
           </div>

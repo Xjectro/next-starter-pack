@@ -52,3 +52,4 @@ export * from "./Calendar";
 export * from "./Button";
 export * from "./Chart";
 export * from "./Loaders";
+export * from "./Footer";

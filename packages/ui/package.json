@@ -77,6 +77,8 @@
     "./components/*": "./src/components/*.tsx",
     "./components": "./src/components/index.ts",
     "./hooks": "./src/hooks/index.ts",
-    "./hooks/*": "./src/hooks/*.ts"
+    "./hooks/*": "./src/hooks/*.ts",
+    "./utils": "./src/utils/index.ts",
+    "./utils/*": "./src/utils/*.ts"
   }
 }

@@ -8,7 +8,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card"
       className={cn(
-        "bg-surface-100 text-typography-50 flex flex-col gap-6 rounded-lg border py-6 shadow-sm",
+        "bg-surface-100 text-typography-50 flex flex-col gap-6 rounded-lg border py-4 shadow-sm",
         className,
       )}
       {...props}
@@ -17,7 +17,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const cardHeaderVariants = cva(
-  "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-[data-slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+  "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-[data-slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-4",
   {
     variants: {
       align: {
@@ -216,7 +216,7 @@ function CardContent({
   );
 }
 
-const cardFooterVariants = cva("px-6 [.border-t]:pt-6", {
+const cardFooterVariants = cva("px-6 [.border-t]:pt-4", {
   variants: {
     align: {
       center: "items-center",

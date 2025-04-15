@@ -2,19 +2,21 @@
 
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
+import Link, { LinkProps } from "next/link";
 import { XIcon } from "lucide-react";
 
 import { cn } from "@repo/ui/lib/utils";
+import { injectPropsToChildren } from "@repo/ui/utils";
 import { buttonVariants } from "@repo/ui/components/Button";
 import { textVariants } from "@repo/ui/components/Text";
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const sheetContentVariants = cva(
-  "group data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+  "data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
   {
     variants: {
-      variant: {
-        default: "bg-surface-50 !border-surface-300",
+      color: {
+        surface: "bg-surface-50 !border-surface-300",
         solid: "bg-solid-500 !border-solid-800",
       },
       side: {
@@ -27,7 +29,7 @@ export const sheetContentVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "solid",
+      color: "surface",
     },
   },
 );
@@ -76,7 +78,7 @@ function SheetContent({
   className,
   children,
   side = "right",
-  variant = "solid",
+  color = "surface",
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & SheetContentVariants) {
   return (
@@ -84,14 +86,16 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Content
         data-slot="sheet-content"
-        data-variant={variant}
-        className={sheetContentVariants({ side, variant, className })}
+        className={sheetContentVariants({ side, color, className })}
         {...props}
       >
-        {children}
+        {injectPropsToChildren(children, {
+          components: [SheetItem],
+          props: { "data-color": color },
+        })}
         <SheetPrimitive.Close
           className={cn(
-            buttonVariants({ variant: "subtle", size: "icon" }),
+            buttonVariants({ variant: color, size: "icon" }),
             "absolute right-0 top-0 m-5",
           )}
         >
@@ -149,11 +153,15 @@ function SheetDescription({
   );
 }
 
-function SheetItem({ className, ...props }: React.ComponentProps<"a">) {
+function SheetItem({
+  className,
+  ...props
+}: LinkProps & { className?: string }) {
   return (
-    <a
+    <Link
+      data-slot="sheet-item"
       className={cn(
-        "transition-all text-base flex items-center w-full gap-2 py-3 px-4 rounded-md bg-transparent group-data-[variant=default]:text-ghost-foreground group-data-[variant=solid]:text-solid-foreground group-data-[variant=default]:hover:bg-ghost-500 group-data-[variant=solid]:hover:bg-solid-800",
+        "transition-all text-base flex items-center w-full gap-2 py-3 px-4 rounded-md bg-transparent data-[color=surface]:text-ghost-foreground data-[color=solid]:text-solid-foreground data-[color=surface]:hover:bg-ghost-500 data-[color=solid]:hover:bg-solid-800",
         className,
       )}
       {...props}
@@ -161,9 +169,10 @@ function SheetItem({ className, ...props }: React.ComponentProps<"a">) {
   );
 }
 
-function SheetItems({ className, ...props }: React.ComponentProps<"div">) {
+function SheetSection({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
+      data-slot="sheet-section"
       className={cn("flex flex-col items-start w-full px-5", className)}
       {...props}
     />
@@ -179,6 +188,6 @@ export {
   SheetFooter,
   SheetTitle,
   SheetItem,
-  SheetItems,
+  SheetSection,
   SheetDescription,
 };

@@ -31,17 +31,17 @@ export const textVariants = cva("", {
       "5xl": "text-5xl font-bold",
       "6xl": "text-6xl font-bold",
     },
-    "line-clamp": {
-      none: "line-clamp-none",
-      "1": "line-clamp-1",
-      "2": "line-clamp-2",
-      "3": "line-clamp-3",
-      "4": "line-clamp-4",
-      "5": "line-clamp-5",
-      "6": "line-clamp-6",
+    lineClamp: {
+      0: "line-clamp-none",
+      1: "line-clamp-1",
+      2: "line-clamp-2",
+      3: "line-clamp-3",
+      4: "line-clamp-4",
+      5: "line-clamp-5",
+      6: "line-clamp-6",
     },
     leading: {
-      "0": "leading-0",
+      0: "leading-0",
       snug: "leading-snug",
     },
     break: {
@@ -89,6 +89,7 @@ export function Text({
   color,
   align,
   leading,
+  lineClamp,
   asChild = false,
   as,
   ...props
@@ -104,7 +105,7 @@ export function Text({
         size,
         className,
         align,
-        ...props,
+        lineClamp,
       })}
       {...props}
     />

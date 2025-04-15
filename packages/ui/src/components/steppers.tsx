@@ -114,7 +114,7 @@ export function Steppers({
               )}
             >
               {value !== 1 && (
-                <Button variant="soft" size="md" onClick={handleBack}>
+                <Button variant="surface" size="md" onClick={handleBack}>
                   <ArrowLeftIcon />
                 </Button>
               )}

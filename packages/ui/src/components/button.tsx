@@ -13,7 +13,8 @@ export const buttonVariants = cva(
           "border border-danger-800 bg-danger-500 text-white hover:bg-danger-700",
         outline:
           "border border-surface-300 bg-surface-100 hover:bg-surface-200 hover:ring-4 hover:ring-surface-300 hover:border-surface-500 text-typography-300 hover:text-typography-50",
-        soft: "bg-surface-200 border border-surface-300 hover:bg-surface-300 text-typography-300 hover:text-typography-50",
+        surface:
+          "bg-surface-200 border border-surface-300 hover:bg-surface-300 text-typography-300 hover:text-typography-50",
         ghost:
           "text-typography-50 md:text-typography-500 hover:bg-ghost-500 md:hover:text-typography-50",
         link: "text-typography-50 underline-offset-4 hover:underline",
