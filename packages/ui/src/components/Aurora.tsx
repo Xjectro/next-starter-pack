@@ -126,7 +126,7 @@ export function Aurora(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = "transparent";
 
-    let program: Program | undefined;
+    let program: Program | undefined = new Program(gl);
 
     const resize = () => {
       if (!ctn) return;
@@ -141,7 +141,8 @@ export function Aurora(props: AuroraProps) {
 
     const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
-      delete (geometry.attributes as any).uv;
+      const attributes = geometry.attributes;
+      geometry.attributes = attributes;
     }
 
     const colorStopsArray = colorStops.map((hex) => {
@@ -197,5 +198,5 @@ export function Aurora(props: AuroraProps) {
     };
   }, [amplitude, blend, colorStops]);
 
-  return <div ref={ctnDom} className="w-full h-full" />;
+  return <div ref={ctnDom} className="h-full w-full" />;
 }

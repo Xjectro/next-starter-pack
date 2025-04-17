@@ -1,7 +1,7 @@
 "use client";
 
 import { useImports } from "@/hooks/useImports";
-import { Button } from "@repo/ui/components";
+import { Button, Text } from "@repo/ui/components";
 import {
   decrement,
   incrementByAmount,
@@ -15,7 +15,9 @@ export function Counter() {
 
   return (
     <div className="flex flex-col gap-10">
-      <h2>{count}</h2>
+      <Text variant="shiny" color="primary" size="4xl">
+        {count}
+      </Text>
       <div className="flex items-center gap-10">
         <Button size="lg" onClick={() => dispatch(incrementAsync(10))}>
           Increment Async
@@ -23,7 +25,9 @@ export function Counter() {
         <Button size="lg" onClick={() => dispatch(incrementByAmount(5))}>
           Increment
         </Button>
-        <Button size="lg" onClick={() => dispatch(decrement())}>Decrement</Button>
+        <Button size="lg" onClick={() => dispatch(decrement())}>
+          Decrement
+        </Button>
       </div>
     </div>
   );

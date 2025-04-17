@@ -1,0 +1,5 @@
+{
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "tailwindStylesheet": "./packages/ui/styles/globals.css",
+    "tailwindAttributes": ["className"]
+  }

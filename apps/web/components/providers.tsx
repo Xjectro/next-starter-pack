@@ -5,7 +5,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 import { Toaster } from "@repo/ui/components";
 import { StoreProvider } from "@repo/utils/components";
-import { DefaultPreloadPage } from "@/components/Container";
+import { DefaultPreloadPage } from "@/components/Page";
 
 export function Providers({ children }: React.PropsWithChildren) {
   return (

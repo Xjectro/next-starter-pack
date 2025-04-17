@@ -94,8 +94,8 @@ function NavigationMenuContent({
     <NavigationMenuPrimitive.Content
       data-slot="navigation-menu-content"
       className={cn(
-        "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 top-0 left-0 w-full p-2 pr-2.5 md:absolute md:w-auto",
-        "group-data-[viewport=false]/navigation-menu:bg-surface-100 group-data-[viewport=false]/navigation-menu:text-typography-50 group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-lg group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none",
+        "data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 left-0 top-0 w-full p-2 pr-2.5 md:absolute md:w-auto",
+        "group-data-[viewport=false]/navigation-menu:bg-surface-100 group-data-[viewport=false]/navigation-menu:text-typography-50 group-data-[viewport=false]/navigation-menu:data-[state=open]:animate-in group-data-[viewport=false]/navigation-menu:data-[state=closed]:animate-out group-data-[viewport=false]/navigation-menu:data-[state=closed]:zoom-out-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:zoom-in-95 group-data-[viewport=false]/navigation-menu:data-[state=open]:fade-in-0 group-data-[viewport=false]/navigation-menu:data-[state=closed]:fade-out-0 **:data-[slot=navigation-menu-link]:focus:ring-0 **:data-[slot=navigation-menu-link]:focus:outline-none group-data-[viewport=false]/navigation-menu:top-full group-data-[viewport=false]/navigation-menu:mt-1.5 group-data-[viewport=false]/navigation-menu:overflow-hidden group-data-[viewport=false]/navigation-menu:rounded-lg group-data-[viewport=false]/navigation-menu:border group-data-[viewport=false]/navigation-menu:shadow group-data-[viewport=false]/navigation-menu:duration-200",
         className,
       )}
       {...props}
@@ -110,13 +110,13 @@ function NavigationMenuViewport({
   return (
     <div
       className={cn(
-        "absolute top-full left-0 isolate z-50 flex justify-center",
+        "absolute left-0 top-full isolate z-50 flex justify-center",
       )}
     >
       <NavigationMenuPrimitive.Viewport
         data-slot="navigation-menu-viewport"
         className={cn(
-          "origin-top-center transition-all duration-0 bg-surface-100 border !border-surface-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg shadow md:w-[var(--radix-navigation-menu-viewport-width)]",
+          "origin-top-center bg-surface-100 !border-surface-300 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg border shadow transition-all duration-0 md:w-[var(--radix-navigation-menu-viewport-width)]",
           className,
         )}
         {...props}
@@ -133,7 +133,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "transition-colors flex flex-col gap-1 rounded-md p-2 text-sm focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4 hover:bg-ghost-500 focus:bg-ghost-600",
+        "hover:bg-ghost-500 focus:bg-ghost-600 flex flex-col gap-1 rounded-md p-2 text-sm transition-colors focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
         className,
       )}
       {...props}
@@ -149,12 +149,12 @@ function NavigationMenuIndicator({
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
       className={cn(
-        "transition-all data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden transition-all",
         className,
       )}
       {...props}
     >
-      <div className="bg-surface-100 relative top-[60%] h-2 w-2 rotate-45 rounded-tl-solid shadow-md" />
+      <div className="bg-surface-100 rounded-tl-primary relative top-[60%] h-2 w-2 rotate-45 shadow-md" />
     </NavigationMenuPrimitive.Indicator>
   );
 }
@@ -171,7 +171,7 @@ function NavigationMenuListItem({
       <NavigationMenuLink asChild>
         <a
           className={cn(
-            "flex items-center gap-5 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-ghost-500 hover:text-ghost-foreground focus:bg-ghost-500 focus:text-ghost-foreground",
+            "hover:bg-ghost-500 hover:text-ghost-foreground focus:bg-ghost-500 focus:text-ghost-foreground flex select-none items-center gap-5 rounded-md p-3 leading-none no-underline outline-none transition-colors",
             className,
           )}
           {...props}

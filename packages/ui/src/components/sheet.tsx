@@ -17,7 +17,7 @@ export const sheetContentVariants = cva(
     variants: {
       color: {
         surface: "bg-surface-50 !border-surface-300",
-        solid: "bg-solid-500 !border-solid-800",
+        primary: "bg-primary-500 !border-primary-800",
       },
       side: {
         right:
@@ -66,7 +66,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-xl bg-black/20",
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/20 backdrop-blur-xl",
         className,
       )}
       {...props}
@@ -111,7 +111,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-header"
-      className={cn("flex flex-col gap-1.5 px-5 pt-5 pb-2", className)}
+      className={cn("flex flex-col gap-1.5 px-5 pb-2 pt-5", className)}
       {...props}
     />
   );
@@ -161,7 +161,7 @@ function SheetItem({
     <Link
       data-slot="sheet-item"
       className={cn(
-        "transition-all text-base flex items-center w-full gap-2 py-3 px-4 rounded-md bg-transparent data-[color=surface]:text-ghost-foreground data-[color=solid]:text-solid-foreground data-[color=surface]:hover:bg-ghost-500 data-[color=solid]:hover:bg-solid-800",
+        "data-[color=surface]:text-ghost-foreground data-[color=primary]:text-primary-foreground data-[color=surface]:hover:bg-ghost-500 data-[color=primary]:hover:bg-primary-800 flex w-full items-center gap-2 rounded-md bg-transparent px-4 py-3 text-base transition-all",
         className,
       )}
       {...props}
@@ -173,7 +173,7 @@ function SheetSection({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="sheet-section"
-      className={cn("flex flex-col items-start w-full px-5", className)}
+      className={cn("flex w-full flex-col items-start px-5", className)}
       {...props}
     />
   );

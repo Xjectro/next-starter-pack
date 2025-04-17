@@ -11,7 +11,7 @@ export const textVariants = cva("", {
     color: {
       foreground: "text-typography-50",
       muted: "text-typography-500",
-      solid: "text-solid-500",
+      primary: "text-primary-500",
     },
     align: {
       start: "text-start",
@@ -58,9 +58,9 @@ export const textVariants = cva("", {
   compoundVariants: [
     {
       variant: "shiny",
-      color: "solid",
+      color: "primary",
       className:
-        "bg-solid-500 bg-[linear-gradient(120deg,transparent_30%,var(--color-solid-800)_45%,transparent_60%)]",
+        "bg-primary-500 bg-[linear-gradient(120deg,transparent_30%,var(--color-primary-800)_45%,transparent_60%)]",
     },
     {
       variant: "shiny",

@@ -20,7 +20,7 @@ function AccordionItem({
     <AccordionPrimitive.Item
       data-slot="accordion-item"
       className={cn(
-        "border-b mb-4 pb-4 last:mb-0 last:pb-0 last:border-b-0",
+        "mb-4 border-b pb-4 last:mb-0 last:border-b-0 last:pb-0",
         className,
       )}
       {...props}
@@ -38,7 +38,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "flex flex-1 items-start justify-between gap-4 p-4 text-left text-sm font-medium transition-all bg-surface-100 border data-[state=closed]:rounded-lg data-[state=open]:rounded-t-lg data-[state=open]:scale-100 outline-none cursor-pointer focus-visible:scale-[1.1] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
+          "bg-surface-100 flex flex-1 cursor-pointer items-start justify-between gap-4 border p-4 text-left text-sm font-medium outline-none transition-all focus-visible:scale-[1.1] disabled:pointer-events-none disabled:opacity-50 data-[state=open]:scale-100 data-[state=closed]:rounded-lg data-[state=open]:rounded-t-lg [&[data-state=open]>svg]:rotate-180",
           className,
         )}
         {...props}
@@ -58,7 +58,7 @@ function AccordionContent({
   return (
     <AccordionPrimitive.Content
       data-slot="accordion-content"
-      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm border border-t-0 bg-surface-100 rounded-b-lg"
+      className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down bg-surface-100 overflow-hidden rounded-b-lg border border-t-0 text-sm"
       {...props}
     >
       <div className={cn("p-4", className)}>{children}</div>

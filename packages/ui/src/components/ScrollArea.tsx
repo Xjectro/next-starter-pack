@@ -8,21 +8,30 @@ import { cn } from "@repo/ui/lib/utils";
 function ScrollArea({
   className,
   children,
+  orientation,
   ...props
-}: React.ComponentProps<typeof ScrollAreaPrimitive.Root>) {
+}: React.ComponentProps<typeof ScrollAreaPrimitive.Root> &
+  Pick<
+    React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
+    "orientation"
+  >) {
   return (
     <ScrollAreaPrimitive.Root
       data-slot="scroll-area"
-      className={cn("relative", className)}
+      data-orientation={orientation ?? "default"}
+      className={cn(
+        "relative data-[orientation=default]:pb-3.5 data-[orientation=default]:pl-3.5 data-[orientation=horizontal]:pb-3.5 data-[orientation=vertical]:pl-3.5",
+        className,
+      )}
       {...props}
     >
       <ScrollAreaPrimitive.Viewport
         data-slot="scroll-area-viewport"
-        className="size-full rounded-[inherit] transition-[color,box-shadow] focus-visible:ring-4 focus-visible:outline-1"
+        className="size-full rounded-[inherit] transition-[color,box-shadow] focus-visible:outline-1 focus-visible:ring-4"
       >
         {children}
       </ScrollAreaPrimitive.Viewport>
-      <ScrollBar />
+      <ScrollBar orientation={orientation} />
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
   );
@@ -38,7 +47,7 @@ function ScrollBar({
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
       className={cn(
-        "flex touch-none p-px transition-colors select-none bg-ghost-300",
+        "bg-ghost-300 flex touch-none select-none p-px transition-colors",
         orientation === "vertical" && "h-full w-2.5",
         orientation === "horizontal" && "h-2.5 flex-col",
         className,
@@ -47,7 +56,7 @@ function ScrollBar({
     >
       <ScrollAreaPrimitive.ScrollAreaThumb
         data-slot="scroll-area-thumb"
-        className="bg-solid-500 relative flex-1 rounded-full"
+        className="bg-primary-500 relative flex-1 rounded-full"
       />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );

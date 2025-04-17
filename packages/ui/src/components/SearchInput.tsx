@@ -6,7 +6,7 @@ import { Search } from "lucide-react";
 import { buttonVariants } from "@repo/ui/components/Button";
 
 export const searchInputVariants = cva(
-  "transition-all flex items-center w-full gap-3 rounded-lg bg-surface-200 hover:bg-surface-300 focus-visible:border-solid-500 border border-surface-300",
+  "transition-all flex items-center w-full gap-3 rounded-lg bg-surface-200 hover:bg-surface-300 focus-visible:border-primary-500 border border-surface-300",
   {
     variants: {
       size: {
@@ -50,7 +50,7 @@ export function SearchInput({
     <span className={searchInputVariants({ size, className })}>
       <input
         type="text"
-        className="cursor-pointer focus:cursor-text w-full border-none outline-none bg-transparent placeholder:text-typography-500"
+        className="placeholder:text-typography-500 w-full cursor-pointer border-none bg-transparent outline-none focus:cursor-text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}

@@ -6,12 +6,18 @@ import {
   useCreatePostMutation,
   useGetPostsQuery,
 } from "@repo/utils/services/api";
-import { Separator, Input, Button, Skeleton } from "@repo/ui/components";
+import {
+  Separator,
+  Input,
+  Button,
+  Skeleton,
+  List as ListComponent,
+} from "@repo/ui/components";
 
 export function List() {
   const [title, setTitle] = React.useState("");
 
-  const { data: posts, isLoading: isGettingPosts } = useGetPostsQuery({
+  const { data: posts = [], isLoading: isGettingPosts } = useGetPostsQuery({
     limit: 5,
     offset: 0,
   });
@@ -33,9 +39,11 @@ export function List() {
         <Skeleton className="size-46" />
       ) : (
         <ul>
-          {posts?.map((post) => {
-            return <li key={post.id}>{post.title}</li>;
-          })}
+          <ListComponent
+            items={posts}
+            keyExtractor={(item) => item.id}
+            renderItem={(post) => <li key={post.id}>{post.title}</li>}
+          />
         </ul>
       )}
     </div>

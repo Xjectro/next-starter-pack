@@ -6,7 +6,7 @@ import { injectPropsToChildren } from "@repo/ui/utils";
 export const footerVariants = cva("w-full p-4 gap-6", {
   variants: {
     color: {
-      solid: "bg-solid-500 border-t !border-solid-800",
+      primary: "bg-primary-500 border-t !border-primary-800",
       danger: "bg-danger-500 border-t !border-danger-800",
       surface: "bg-surface-100 border-t !border-surface-300",
     },
@@ -24,7 +24,7 @@ export const footerVariants = cva("w-full p-4 gap-6", {
   defaultVariants: {
     variant: "default",
     columns: 3,
-    color: "solid",
+    color: "primary",
   },
 });
 
@@ -35,7 +35,7 @@ type FooterBaseProps = {
 };
 
 export function Footer({
-  color = "solid",
+  color = "primary",
   columns,
   variant = "default",
   className,
@@ -108,7 +108,7 @@ export function FooterItem({
     <div
       data-slot="footer-item"
       className={cn(
-        "text-sm data-[color=solid]:text-solid-100 data-[color=surface]:text-typography-500 data-[color=danger]:text-danger-100",
+        "data-[color=primary]:text-primary-100 data-[color=surface]:text-typography-500 data-[color=danger]:text-danger-100 text-sm",
         className,
       )}
       {...props}
@@ -124,7 +124,7 @@ export function FooterBrand({
     <div
       data-slot="footer-brand"
       className={cn(
-        "text-lg font-bold data-[color=solid]:text-solid-foreground data-[color=surface]:text-typography-50 data-[color=danger]:text-danger-foreground",
+        "data-[color=primary]:text-primary-foreground data-[color=surface]:text-typography-50 data-[color=danger]:text-danger-foreground text-lg font-bold",
         className,
       )}
       {...props}
@@ -138,7 +138,7 @@ export function FooterSeparator(
   return (
     <hr
       data-slot="footer-separator"
-      className="col-span-full border-t data-[color=solid]:!border-solid-800 data-[color=surface]:text-surface-500 data-[color=danger]:text-danger-800"
+      className="data-[color=primary]:!border-primary-800 data-[color=surface]:text-surface-500 data-[color=danger]:text-danger-800 col-span-full border-t"
       {...props}
     />
   );

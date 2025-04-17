@@ -2,7 +2,7 @@ import React from "react";
 
 type InjectPropsToChildrenOptions = {
   components: React.ElementType[];
-  props: Record<string, any>;
+  props: Record<string, unknown>;
 };
 
 export default function injectPropsToChildren(

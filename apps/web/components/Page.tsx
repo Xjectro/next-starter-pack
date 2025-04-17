@@ -1,6 +1,5 @@
 import React from "react";
 
-import { cn } from "@repo/ui/lib/utils";
 import Link from "next/link";
 import {
   Button,
@@ -18,9 +17,12 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+  Container,
+  ContainerProps,
 } from "@repo/ui/components";
 import { EllipsisVerticalIcon } from "lucide-react";
 import { useTheme } from "next-themes";
+import { cn } from "@repo/ui/lib/utils";
 
 export function DefaultNavbar() {
   const { setTheme, themes, theme } = useTheme();
@@ -34,13 +36,14 @@ export function DefaultNavbar() {
   return (
     <Navbar
       shouldHideOnScroll
+      isBackground
       variant="floating"
       className="max-sm:flex-col max-sm:py-5"
     >
       <NavbarContent justify="start">
         <NavbarItem>
           <Link href="/">
-            <Text color="solid" variant="shiny" size="2xl">
+            <Text color="primary" variant="shiny" size="2xl">
               {process.env.NEXT_PUBLIC_APP_TITLE}
             </Text>
           </Link>
@@ -56,7 +59,7 @@ export function DefaultNavbar() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuSub>
-                <DropdownMenuSubTrigger>Tema Modu</DropdownMenuSubTrigger>
+                <DropdownMenuSubTrigger>Theme Mode</DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
                     <DropdownMenuRadioGroup
@@ -82,27 +85,25 @@ export function DefaultNavbar() {
 
 export function DefaultPreloadPage() {
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
+    <div className="flex h-screen w-screen items-center justify-center">
       <Spinner size="lg" />
     </div>
   );
 }
 
-export function Container({
-  children,
+export function Page({
   className,
   navbar,
+  ...props
 }: {
-  children: React.ReactNode;
-  className?: string;
   navbar?: () => React.ReactNode;
-}) {
+} & ContainerProps) {
   const NavbarComponent = navbar || DefaultNavbar;
 
   return (
-    <div className="flex flex-col items-center gap-10">
+    <div className="flex flex-col items-center">
       <NavbarComponent />
-      <div className={cn("container mt-24 mb-44", className)}>{children}</div>
+      <Container className={cn("mt-36 pb-24", className)} {...props} />
     </div>
   );
 }

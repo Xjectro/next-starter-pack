@@ -39,7 +39,7 @@ function Textarea({
         onChange={handleChange}
         {...props}
       />
-      <span className="absolute bottom-1 right-2 font-medium text-typography-50 pointer-events-none">
+      <span className="text-typography-50 pointer-events-none absolute bottom-1 right-2 font-medium">
         {value.length}
       </span>
     </span>

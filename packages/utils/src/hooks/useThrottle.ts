@@ -1,13 +1,12 @@
 import React from "react";
 
-export function useThrottle<T extends (...args: any[]) => void>(
-  func: T,
-  delay: number,
-): T {
+type AnyFunction = (...args: unknown[]) => void;
+
+export function useThrottle<T extends AnyFunction>(func: T, delay: number): T {
   const lastCall = React.useRef(0);
 
   return React.useCallback(
-    ((...args: any[]) => {
+    ((...args: Parameters<T>) => {
       const now = Date.now();
       if (now - lastCall.current >= delay) {
         lastCall.current = now;

@@ -162,7 +162,7 @@ export function Squares({
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full border-none block"
+      className="block h-full w-full border-none"
     ></canvas>
   );
 }

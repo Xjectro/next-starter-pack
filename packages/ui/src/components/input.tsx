@@ -53,7 +53,7 @@ function Input({
         background: useMotionTemplate`
         radial-gradient(
           ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
-          var(--color-solid-500),
+          var(--color-primary-500),
           transparent 80%
         )
       `,
@@ -61,7 +61,7 @@ function Input({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="w-full p-[2px] rounded-lg transition duration-300 group/input"
+      className="group/input w-full rounded-lg p-[2px] transition duration-300"
     >
       <input
         type={type}

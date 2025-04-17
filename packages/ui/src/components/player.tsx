@@ -20,7 +20,7 @@ export function VideoPlayer({
       .vds-audio-layout,
 .vds-video-layout {
   /* Shared. */
-  --media-brand: var(--color-solid-500);
+  --media-brand: var(--color-primary-500);
   --media-controls-color: #f5f5f5;
   --media-font-family: var(--font-kanit);
 
@@ -53,7 +53,7 @@ export function VideoPlayer({
   /* Tooltips. */
   --media-tooltip-bg-color: black;
   --media-tooltip-border-radius: 4px;
-  --media-tooltip-border: 1px solid rgb(255 255 255 / 0.1);
+  --media-tooltip-border: 1px primary rgb(255 255 255 / 0.1);
   --media-tooltip-color: hsl(0, 0%, 80%);
   --media-tooltip-font-size: 13px;
   --media-tooltip-font-weight: 500;
@@ -105,7 +105,7 @@ export function VideoPlayer({
 
   /* Thumbnails. */
   --media-thumbnail-bg: black;
-  --media-thumbnail-border: 1px solid white;
+  --media-thumbnail-border: 1px primary white;
   --media-thumbnail-aspect-ratio: 16 / 9;
   --media-thumbnail-min-width: 120px;
   --media-thumbnail-min-height: calc(
@@ -132,9 +132,9 @@ export function VideoPlayer({
   --media-slider-height: 48px;
 
   /* Slider Thumb. */
-  --media-slider-thumb-bg: var(--color-solid-500);
+  --media-slider-thumb-bg: var(--color-primary-500);
   --media-slider-thumb-border-radius: 9999px;
-  --media-slider-thumb-border: 1px solid var(--color-solid-800);
+  --media-slider-thumb-border: 1px primary var(--color-primary-800);
   --media-slider-thumb-size: 15px;
   --media-slider-thumb-transition: opacity 0.2s ease-in, box-shadow 0.2s ease;
 
@@ -187,9 +187,9 @@ export function VideoPlayer({
   /* Menu. */
   --media-menu-bg: var(--color-surface-50);
   --media-menu-border-radius: var(--radius);
-  --media-menu-border: 1px solid var(--color-surface-300);
+  --media-menu-border: 1px primary var(--color-surface-300);
   --media-menu-box-shadow: 1px 1px 1px rgb(10 10 10 / 0.5);
-  --media-menu-divider: 1px solid var(--color-surface-500);
+  --media-menu-divider: 1px primary var(--color-surface-500);
   --media-menu-font-size: 14px;
   --media-menu-font-weight: 500;
   --media-menu-max-height: 250px;
@@ -233,16 +233,16 @@ export function VideoPlayer({
   /* Menu Checkbox. */
   --media-menu-checkbox-width: 40px;
   --media-menu-checkbox-height: 18px;
-  --media-menu-checkbox-bg-active: var(--color-solid-500);
+  --media-menu-checkbox-bg-active: var(--color-primary-500);
   --media-menu-checkbox-bg: var(--color-surface-500);
-  --media-menu-checkbox-handle-bg: var(--color-solid-foreground);
+  --media-menu-checkbox-handle-bg: var(--color-primary-foreground);
   --media-menu-checkbox-handle-border: unset;
   --media-menu-checkbox-handle-diameter: calc(var(--checkbox-height) - 2px);
 
   /* Menu Slider. */
   --media-menu-slider-height: 32px;
   --media-menu-slider-track-bg: var(--color-surface-800);
-  --media-menu-slider-track-fill-bg: var(--color-solid-500);
+  --media-menu-slider-track-fill-bg: var(--color-primary-500);
 
   /* Menu Hint. */
   --media-menu-hint-color: var(--color-typography-50);
@@ -254,7 +254,7 @@ export function VideoPlayer({
   --media-chapters-duration-bg: unset;
   --media-chapters-duration-border-radius: var(--radius);
   --media-chapters-focus-padding: 4px;
-  --media-chapters-item-active-bg: var(--color-solid-500);
+  --media-chapters-item-active-bg: var(--color-primary-500);
   --media-chapters-item-active-border-left: unset;
   --media-chapters-min-width: var(--media-menu-min-width, 220px);
   --media-chapters-padding: 0;
@@ -279,7 +279,7 @@ export function VideoPlayer({
         <MediaProvider />
         <DefaultVideoLayout icons={defaultLayoutIcons} />
         <Poster
-          className="absolute inset-0 block h-full w-full bg-black rounded-md opacity-0 transition-opacity data-[visible]:opacity-100 [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
+          className="absolute inset-0 block h-full w-full rounded-md bg-black opacity-0 transition-opacity data-[visible]:opacity-100 [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
           src={poster}
           alt={title}
         />
@@ -292,10 +292,11 @@ export function CloudPlayer({ src }: { src: string }) {
   return (
     <iframe
       src={src}
+      sandbox="allow-scripts allow-same-origin"
       loading="lazy"
       style={{ border: "none", height: "100%", width: "100%" }}
       className="rounded-xl"
-      allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; allow-scripts"
+      allow="autoplay; encrypted-media; picture-in-picture"
       allowFullScreen={true}
     ></iframe>
   );

@@ -158,9 +158,9 @@ function PaginationLink({ isActive = false, ...props }: PaginationLinkProps) {
   return (
     <Button
       aria-current={isActive ? "page" : undefined}
-      variant={isActive ? "solid" : "ghost"}
+      variant={isActive ? "primary" : "ghost"}
       className={cn(
-        "font-medium pointer-events-auto aria-[current=page]:font-bold aria-[current=page]:pointer-events-none",
+        "pointer-events-auto font-medium aria-[current=page]:pointer-events-none aria-[current=page]:font-bold",
       )}
       size="icon"
       {...props}

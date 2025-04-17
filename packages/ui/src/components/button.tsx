@@ -7,8 +7,8 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid:
-          "border border-solid-800 bg-gradient-to-t to-solid-500 from-solid-700 text-solid-foreground hover:to-solid-700",
+        primary:
+          "border border-primary-800 bg-gradient-to-t to-primary-500 from-primary-700 text-primary-foreground hover:to-primary-700",
         danger:
           "border border-danger-800 bg-danger-500 text-white hover:bg-danger-700",
         outline:
@@ -18,7 +18,7 @@ export const buttonVariants = cva(
         ghost:
           "text-typography-50 md:text-typography-500 hover:bg-ghost-500 md:hover:text-typography-50",
         link: "text-typography-50 underline-offset-4 hover:underline",
-        subtle: "text-solid-foreground hover:bg-solid-800",
+        subtle: "text-primary-foreground hover:bg-primary-800",
       },
       size: {
         sm: "gap-1.5 px-3 py-1.5 has-[>svg]:px-2.5",
@@ -32,7 +32,7 @@ export const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "solid",
+      variant: "primary",
       shape: "square",
     },
   },

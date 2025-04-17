@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@repo/ui/lib/utils";
 import { useWindowScroll } from "react-use";
 
-export const NAVBAR_HEIGHT = 66;
+export const DEFAULT_NAVBAR_HEIGHT = 66;
 export const FLOATING_MARGIN = 20;
 
 const navbarVariants = cva(
@@ -42,9 +42,13 @@ export function Navbar({
   children,
   ...props
 }: NavbarProps) {
+  const navbarRef = useRef<HTMLElement | null>(null);
   const { y: scrollY } = useWindowScroll();
   const [beforeScrollY, setBeforeScrollY] = React.useState(scrollY);
   const [yPosition, setYPosition] = React.useState(0);
+
+  const NAVBAR_HEIGHT =
+    navbarRef?.current?.offsetHeight || DEFAULT_NAVBAR_HEIGHT;
 
   const maxOffset =
     variant === "floating" ? NAVBAR_HEIGHT + FLOATING_MARGIN : NAVBAR_HEIGHT;
@@ -70,7 +74,7 @@ export function Navbar({
     variant === "default" ? (
       <div
         className={cn(
-          "container flex items-center w-full h-full gap-5",
+          "container flex h-full w-full items-center gap-5",
           className,
         )}
       >
@@ -84,6 +88,7 @@ export function Navbar({
 
   return (
     <nav
+      ref={navbarRef}
       style={{
         backgroundColor: isBackground
           ? `oklch(var(--surface-100) / ${opacity})`
@@ -92,7 +97,7 @@ export function Navbar({
           ? `oklch(var(--surface-300) / ${opacity})`
           : "transparent",
         transform: `translateY(-${yPosition}px)`,
-        minHeight: NAVBAR_HEIGHT,
+        minHeight: DEFAULT_NAVBAR_HEIGHT,
         marginTop: variant === "floating" ? `${FLOATING_MARGIN}px` : "0px",
       }}
       className={navbarVariants({
@@ -120,7 +125,7 @@ export function NavbarContent({
     <ul
       data-justify={justify}
       className={cn(
-        "flex flex-row items-center w-full h-full gap-5 data-[justify=start]:justify-start data-[justify=center]:justify-center data-[justify=end]:justify-end",
+        "flex h-full w-full flex-row items-center gap-5 data-[justify=start]:justify-start data-[justify=end]:justify-end data-[justify=center]:justify-center",
         className,
       )}
       {...props}

@@ -41,7 +41,7 @@ export function Spinner({
         className={spinnerVariants({
           size,
           className:
-            "block absolute top-0 left-0 rounded-full box-border border-6 border-t-8 !border-t-solid-500 !border-surface-300",
+            "border-6 !border-t-primary-500 !border-surface-300 absolute left-0 top-0 box-border block rounded-full border-t-8",
         })}
         animate={{ rotate: 360 }}
         transition={spinTransition}

@@ -11,19 +11,20 @@ const toggleVariants = cva(
   {
     variants: {
       variant: {
-        solid: "bg-transparent hover:bg-ghost-300 hover:text-ghost-foreground",
+        primary:
+          "bg-transparent hover:bg-ghost-300 hover:text-ghost-foreground",
         outline:
           "border border-surface-300 bg-transparent shadow-xs hover:bg-ghost-300 hover:text-ghost-foreground",
       },
       size: {
-        solid: "h-9 px-2 min-w-9",
+        primary: "h-9 px-2 min-w-9",
         sm: "h-8 px-1.5 min-w-8",
         lg: "h-10 px-2.5 min-w-10",
       },
     },
     defaultVariants: {
-      variant: "solid",
-      size: "solid",
+      variant: "primary",
+      size: "primary",
     },
   },
 );

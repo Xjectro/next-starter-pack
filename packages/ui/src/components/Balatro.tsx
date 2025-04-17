@@ -229,5 +229,5 @@ export function Balatro({
     mouseInteraction,
   ]);
 
-  return <div ref={containerRef} className="w-full h-full" />;
+  return <div ref={containerRef} className="h-full w-full" />;
 }

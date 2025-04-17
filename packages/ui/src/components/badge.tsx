@@ -7,8 +7,8 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        solid:
-          "!border-transparent bg-solid-500 text-solid-foreground [a&]:hover:bg-solid-600",
+        primary:
+          "!border-transparent bg-primary-500 text-primary-foreground [a&]:hover:bg-primary-600",
         surface:
           "!border-surface-300 bg-surface-200 text-typography-50 [a&]:hover:bg-surface-300",
       },
@@ -18,7 +18,7 @@ const badgeVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "solid",
+      variant: "primary",
       size: "md",
     },
   },

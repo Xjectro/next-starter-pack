@@ -64,7 +64,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.8",
     "@turbo/gen": "^2.4.2",
-    "@types/node": "^20",
+    "@types/node": "^20.17.30",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "tailwindcss": "^4.0.8",
@@ -79,6 +79,7 @@
     "./hooks": "./src/hooks/index.ts",
     "./hooks/*": "./src/hooks/*.ts",
     "./utils": "./src/utils/index.ts",
-    "./utils/*": "./src/utils/*.ts"
+    "./utils/*": "./src/utils/*.ts",
+    "./types/*": "./src/types/*.ts"
   }
 }

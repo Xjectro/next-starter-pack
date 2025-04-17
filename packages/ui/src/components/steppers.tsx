@@ -69,13 +69,13 @@ export function Steppers({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center w-full",
+        "flex w-full flex-col items-center justify-center",
         className,
       )}
       {...props}
     >
-      <div className="mx-auto w-full rounded-lg bg-surface-100 border !border-surface-300 shadow-xl">
-        <div className="flex items-center w-full p-8">
+      <div className="bg-surface-100 !border-surface-300 mx-auto w-full rounded-lg border shadow-xl">
+        <div className="flex w-full items-center p-8">
           {stepsArray.map((_, index) => {
             const stepNumber = index + 1;
             return (
@@ -109,7 +109,7 @@ export function Steppers({
           <div className="px-8 pb-8">
             <div
               className={cn(
-                "flex mt-10",
+                "mt-10 flex",
                 value !== 1 ? "justify-between" : "justify-end",
               )}
             >
@@ -242,13 +242,13 @@ function StepIndicator({
           },
           active: {
             scale: 1,
-            backgroundColor: "var(--color-solid-500)",
-            color: "var(--color-solid-foreground)",
+            backgroundColor: "var(--color-primary-500)",
+            color: "var(--color-primary-foreground)",
           },
           complete: {
             scale: 1,
-            backgroundColor: "var(--color-solid-500)",
-            color: "var(--color-solid-foreground)",
+            backgroundColor: "var(--color-primary-500)",
+            color: "var(--color-primary-foreground)",
           },
         }}
         transition={{ duration: 0.3 }}
@@ -267,14 +267,14 @@ function StepIndicator({
 
 function StepConnector({ isComplete }: { isComplete: boolean }) {
   return (
-    <div className="relative mx-2 h-px flex-1 overflow-hidden rounded-full bg-surface-500">
+    <div className="bg-surface-500 relative mx-2 h-px flex-1 overflow-hidden rounded-full">
       <motion.div
         className="absolute left-0 top-0 h-full"
         variants={{
           incomplete: { width: 0, backgroundColor: "var(--color-surface-500)" },
           complete: {
             width: "100%",
-            backgroundColor: "var(--color-solid-500)",
+            backgroundColor: "var(--color-primary-500)",
           },
         }}
         initial={false}

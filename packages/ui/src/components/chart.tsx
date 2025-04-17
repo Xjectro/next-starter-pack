@@ -55,7 +55,7 @@ function ChartContainer({
         data-slot="chart"
         data-chart={chartId}
         className={cn(
-          "[&_.recharts-cartesian-axis-tick_text]:fill-typography-500 [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-surface-500/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-surface-500 [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-surface-500 [&_.recharts-radial-bar-background-sector]:fill-typography-500 [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-typography-500 [&_.recharts-reference-line_[stroke='#ccc']]:stroke-surface-500 flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-sector[stroke='#fff']]:stroke-transparent [&_.recharts-surface]:outline-hidden",
+          "[&_.recharts-cartesian-axis-tick_text]:fill-typography-500 [&_.recharts-cartesian-grid_line[stroke='#ccc']]:stroke-surface-500/50 [&_.recharts-curve.recharts-tooltip-cursor]:stroke-surface-500 [&_.recharts-polar-grid_[stroke='#ccc']]:stroke-surface-500 [&_.recharts-radial-bar-background-sector]:fill-typography-500 [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-typography-500 [&_.recharts-reference-line_[stroke='#ccc']]:stroke-surface-500 [&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden flex aspect-video justify-center text-xs [&_.recharts-dot[stroke='#fff']]:stroke-transparent [&_.recharts-sector[stroke='#fff']]:stroke-transparent",
           className,
         )}
         {...props}
@@ -173,7 +173,7 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "grid min-w-[8rem] items-start gap-1.5 rounded-lg px-2.5 py-1.5 text-xs shadow-xl bg-surface-100 border border-surface-300",
+        "bg-surface-100 border-surface-300 grid min-w-[8rem] items-start gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs shadow-xl",
         className,
       )}
     >
@@ -202,7 +202,7 @@ function ChartTooltipContent({
                     !hideIndicator && (
                       <div
                         className={cn(
-                          "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+                          "border-(--color-border) bg-(--color-bg) shrink-0 rounded-[2px]",
                           {
                             "h-2.5 w-2.5": indicator === "dot",
                             "w-1": indicator === "line",

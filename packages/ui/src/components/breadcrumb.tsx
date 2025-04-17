@@ -13,7 +13,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
     <ol
       data-slot="breadcrumb-list"
       className={cn(
-        "text-typography-500 flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
+        "text-typography-500 flex flex-wrap items-center gap-1.5 break-words text-sm sm:gap-2.5",
         className,
       )}
       {...props}
@@ -56,7 +56,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
       role="link"
       aria-disabled="true"
       aria-current="page"
-      className={cn("text-solid-500 font-normal", className)}
+      className={cn("text-primary-500 font-normal", className)}
       {...props}
     />
   );
@@ -90,7 +90,7 @@ function BreadcrumbEllipsis({
       role="presentation"
       aria-hidden="true"
       className={cn(
-        "transition-colors flex size-9 items-center justify-center cursor-pointer hover:text-typography-50",
+        "hover:text-typography-50 flex size-9 cursor-pointer items-center justify-center transition-colors",
         className,
       )}
       {...props}

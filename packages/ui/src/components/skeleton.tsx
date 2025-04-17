@@ -31,8 +31,8 @@ export function Skeleton({
 
 export function PlayerSkeleton() {
   return (
-    <Skeleton className="flex items-center justify-center w-full aspect-[16/9]">
-      <PlayIcon className="size-10 md:size-16 lg:size-20 text-solid-500" />
+    <Skeleton className="flex aspect-[16/9] w-full items-center justify-center">
+      <PlayIcon className="text-primary-500 size-10 md:size-16 lg:size-20" />
     </Skeleton>
   );
 }

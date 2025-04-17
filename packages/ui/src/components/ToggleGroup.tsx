@@ -10,8 +10,8 @@ import {
 } from "@repo/ui/components/Toggle";
 
 const ToggleGroupContext = React.createContext<ToggleVariants>({
-  size: "solid",
-  variant: "solid",
+  size: "primary",
+  variant: "primary",
 });
 
 function ToggleGroup({
@@ -27,7 +27,7 @@ function ToggleGroup({
       data-variant={variant}
       data-size={size}
       className={cn(
-        "group/toggle-group flex w-fit items-center rounded-lg data-[variant=outline]:shadow-xs",
+        "group/toggle-group data-[variant=outline]:shadow-xs flex w-fit items-center rounded-lg",
         className,
       )}
       {...props}
@@ -58,7 +58,7 @@ function ToggleGroupItem({
           variant: context.variant || variant,
           size: context.size || size,
         }),
-        "min-w-0 flex-1 shrink-0 rounded-none shadow-none first:rounded-l-solid last:rounded-r-lg focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
+        "first:rounded-l-primary min-w-0 flex-1 shrink-0 rounded-none shadow-none last:rounded-r-lg focus:z-10 focus-visible:z-10 data-[variant=outline]:border-l-0 data-[variant=outline]:first:border-l",
         className,
       )}
       {...props}
