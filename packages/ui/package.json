@@ -80,6 +80,6 @@
     "./hooks/*": "./src/hooks/*.ts",
     "./utils": "./src/utils/index.ts",
     "./utils/*": "./src/utils/*.ts",
-    "./types/*": "./src/types/*.ts"
+    "./types/*": "./src/types/*.d.ts"
   }
 }

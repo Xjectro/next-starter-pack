@@ -1,8 +1,6 @@
 import { cn } from "@repo/ui/lib/utils";
-import {
-  type ResponsiveValue,
-  isResponsiveObject,
-} from "@repo/ui/types/responsive";
+import { type ResponsiveValue } from "@repo/ui/types/responsive";
+import { isResponsiveObject } from "@repo/ui/lib/typeGuards";
 
 export function getResponsiveClasses<T>(
   value?: ResponsiveValue<T>,
