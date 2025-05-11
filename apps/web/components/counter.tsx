@@ -1,7 +1,6 @@
 "use client";
 
-import { useImports } from "@/hooks/useImports";
-import { Button, Text } from "@repo/ui/components";
+import { useAppSelector, useAppDispatch } from "@repo/utils/lib/redux";
 import {
   decrement,
   incrementByAmount,
@@ -9,16 +8,18 @@ import {
   selectValue,
 } from "@repo/utils/stores/counterSlice";
 
+import { Button, Text,Container } from "@xjectro/react/ui/components";
+
 export function Counter() {
-  const { dispatch, useAppSelector } = useImports();
   const count = useAppSelector(selectValue);
+  const dispatch = useAppDispatch();
 
   return (
-    <div className="flex flex-col gap-10">
+    <Container direction="vertical" spacing="xl" className="w-full">
       <Text variant="shiny" color="primary" size="4xl">
         {count}
       </Text>
-      <div className="flex items-center gap-10">
+      <Container direction="horizontal" spacing="xl" as="span">
         <Button size="lg" onClick={() => dispatch(incrementAsync(10))}>
           Increment Async
         </Button>
@@ -28,7 +29,7 @@ export function Counter() {
         <Button size="lg" onClick={() => dispatch(decrement())}>
           Decrement
         </Button>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 }

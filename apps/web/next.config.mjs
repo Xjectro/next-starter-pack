@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@repo/ui"],
+  transpilePackages: ["@xjectro/react"],
   env: {
-    SERVER_URI: process.env.SERVER_URL,
+    SERVER_URL: process.env.SERVER_URL,
   },
 };
 

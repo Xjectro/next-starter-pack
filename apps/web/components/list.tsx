@@ -1,18 +1,19 @@
 "use client";
 
 import React from "react";
-
 import {
   useCreatePostMutation,
   useGetPostsQuery,
 } from "@repo/utils/services/api";
+
 import {
   Separator,
   Input,
   Button,
   Skeleton,
+  Container,
   List as ListComponent,
-} from "@repo/ui/components";
+} from "@xjectro/react/ui/components";
 
 export function List() {
   const [title, setTitle] = React.useState("");
@@ -26,7 +27,7 @@ export function List() {
     useCreatePostMutation();
 
   return (
-    <div className="flex flex-col gap-y-10">
+    <Container direction="vertical" spacing="xl" className="w-full">
       <Input
         onChange={(v) => setTitle(v.target.value)}
         placeholder="Hello !!"
@@ -46,6 +47,6 @@ export function List() {
           />
         </ul>
       )}
-    </div>
+    </Container>
   );
 }

@@ -1,9 +1,24 @@
-import "@repo/ui/globals.css";
+import "@/styles/globals.css";
+import { Metadata, Viewport } from "next";
 import { Providers } from "@/components/Providers";
 
-export const metadata = {
-  title: process.env.NEXT_PUBLIC_APP_TITLE,
-  description: "Description",
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: true,
+  themeColor: "#ffffff",
+};
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | " + process.env.NEXT_PUBLIC_APP_TITLE,
+    default: process.env.NEXT_PUBLIC_APP_TITLE || "Next.js App",
+  },
+  description: "Modern and high-performance web application",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+  ),
 };
 
 export default async function RootLayout({
@@ -13,12 +28,6 @@ export default async function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning>
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-      </head>
       <body>
         <Providers>{children}</Providers>
       </body>

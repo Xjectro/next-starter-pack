@@ -1,9 +1,10 @@
 packages:
   - apps/*
   - packages/*
-  - pipelines/*
-nodeLinker: hoisted
 ignoredBuiltDependencies:
-  - core-js-pure
-  - next-translate-plugin
+  - '@tailwindcss/oxide'
+  - cpu-features
+  - esbuild
   - sharp
+  - ssh2
+nodeLinker: hoisted

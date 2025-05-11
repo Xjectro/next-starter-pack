@@ -1,6 +1,10 @@
 import React from "react";
 
 import Link from "next/link";
+import { EllipsisVerticalIcon } from "lucide-react";
+
+import { cn } from "@xjectro/react/ui/lib";
+import { useTheme } from "@xjectro/react/ui/hooks";
 import {
   Button,
   Navbar,
@@ -19,10 +23,7 @@ import {
   DropdownMenuTrigger,
   Container,
   ContainerProps,
-} from "@repo/ui/components";
-import { EllipsisVerticalIcon } from "lucide-react";
-import { useTheme } from "next-themes";
-import { cn } from "@repo/ui/lib/utils";
+} from "@xjectro/react/ui/components";
 
 export function DefaultNavbar() {
   const { setTheme, themes, theme } = useTheme();
@@ -34,12 +35,7 @@ export function DefaultNavbar() {
   };
 
   return (
-    <Navbar
-      shouldHideOnScroll
-      isBackground
-      variant="floating"
-      className="max-sm:flex-col max-sm:py-5"
-    >
+    <Navbar shouldHideOnScroll isBackground variant="floating">
       <NavbarContent justify="start">
         <NavbarItem>
           <Link href="/">
@@ -101,9 +97,9 @@ export function Page({
   const NavbarComponent = navbar || DefaultNavbar;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       <NavbarComponent />
-      <Container className={cn("mt-36 pb-24", className)} {...props} />
+      <Container direction="vertical" align="start" layout="main" spacing="xl" as="main" className={cn("w-full mt-36 pb-24", className)} {...props} />
     </div>
   );
 }

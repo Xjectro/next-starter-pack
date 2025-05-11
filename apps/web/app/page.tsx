@@ -2,13 +2,14 @@
 
 import * as React from "react";
 import { List } from "@/components/List";
-import { Counter } from "@/components/Counter";
 import { Page } from "@/components/Page";
-import { Separator } from "@repo/ui/components";
+import { Counter } from "@/components/Counter";
+
+import { Separator } from "@xjectro/react/ui/components";
 
 export default function HomePage() {
   return (
-    <Page direction="vertical" align="center" spacing="loose">
+    <Page >
       <Counter />
       <Separator />
       <List />

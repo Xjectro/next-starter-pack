@@ -1,9 +1,13 @@
-import type { Post } from "@repo/types/api";
 import type { Action, PayloadAction } from "@reduxjs/toolkit";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
 
 type RootState = any;
+
+export type PostResponse = {
+  title: string;
+  id: number;
+};
 
 function isHydrateAction(action: Action): action is PayloadAction<RootState> {
   return action.type === HYDRATE;
@@ -12,7 +16,7 @@ function isHydrateAction(action: Action): action is PayloadAction<RootState> {
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.SERVER_URI || "http://localhost:3000",
+    baseUrl: process.env.SERVER_URL || "http://localhost:3000",
   }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (isHydrateAction(action)) {
@@ -21,11 +25,14 @@ export const api = createApi({
   },
   endpoints: (builder) => {
     return {
-      getPosts: builder.query<Post[], { limit: number; offset: number }>({
+      getPosts: builder.query<
+        PostResponse[],
+        { limit: number; offset: number }
+      >({
         query: ({ limit, offset }) =>
           `/posts?_limit=${limit}&_offset=${offset}`,
       }),
-      createPost: builder.mutation<Post, Omit<Post, "id">>({
+      createPost: builder.mutation<PostResponse, Omit<PostResponse, "id">>({
         query: (post) => ({
           url: "/posts",
           method: "POST",

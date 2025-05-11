@@ -1,25 +1,21 @@
 "use client";
 
 import React from "react";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
 
-import { Toaster } from "@repo/ui/components";
 import { StoreProvider } from "@repo/utils/components";
 import { DefaultPreloadPage } from "@/components/Page";
+import {
+  Provider as ThemeProvider,
+  Toaster,
+} from "@xjectro/react/ui/components";
 
 export function Providers({ children }: React.PropsWithChildren) {
   return (
     <React.Suspense fallback={<DefaultPreloadPage />}>
-      <NextThemesProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-        enableColorScheme
-      >
+      <ThemeProvider>
         <Toaster position="bottom-center" />
         <StoreProvider>{children}</StoreProvider>
-      </NextThemesProvider>
+      </ThemeProvider>
     </React.Suspense>
   );
 }

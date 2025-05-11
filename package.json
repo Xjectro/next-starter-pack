@@ -1,32 +1,36 @@
 {
-  "name": "boilerplate",
+  "name": "turborepo-next",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "dotenv -e .env.prod -- turbo build",
     "dev": "dotenv -e .env.dev -- turbo dev",
     "start": "dotenv -e .env.prod -- turbo start",
-    "publish": "dotenv -e .env.publish -- turbo publish",
+    "publish": "npx deloyn push",
     "lint": "turbo lint",
     "check-types": "turbo check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md,css,json,js,mjs}\""
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
-    "@repo/types": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@repo/ui": "workspace:*",
     "@repo/utils": "workspace:*",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "turbo": "^2.4.4",
+    "turbo": "^2.5.3",
     "typescript": "5.7.3"
   },
-  "packageManager": "pnpm@10.7.0",
+  "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
+    "@xjectro/react": "^1.0.56",
+    "deloyn": "^1.0.10",
     "dotenv-cli": "^8.0.0"
+  },
+  "resolutions": {
+    "@types/react": "^18.0.0",
+    "date-fns": "^2.28.0"
   }
 }

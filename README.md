@@ -1,31 +1,68 @@
-# shadcn/ui monorepo template
+# turborepo-next
 
-This template is for creating a monorepo with shadcn/ui.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Usage
+GitHub: [Xjectro/turborepo-next](https://github.com/Xjectro/turborepo-next)
 
-```bash
-pnpm dlx shadcn@latest init
+## Description
+This monorepo boilerplate is built with Next.js, TurboRepo, PNPM, and Tailwind CSS. It provides a ready-to-use setup to kickstart new projects quickly.
+
+## Features
+- Monorepo management with TurboRepo
+- Server-side rendering and static site generation with Next.js
+- Preconfigured Tailwind CSS
+- TypeScript support
+- ESLint & Prettier for code quality
+- Shared packages (utils, eslint-config, typescript-config)
+- Optional example integrations: Redux Toolkit & Prisma
+
+## Project Structure
+```text
+├── apps/
+│   └── web/                # Next.js application
+├── packages/
+│   ├── eslint-config/      # Shared ESLint configurations
+│   ├── typescript-config/  # Shared TypeScript settings
+│   └── utils/              # Utility functions, store, services
+├── package.json            # Root dependencies
+├── pnpm-workspace.yaml     # PNPM workspace settings
+├── turbo.json              # TurboRepo configuration
+└── README.md               # Project documentation
 ```
 
-## Adding components
+## Getting Started
 
-To add components to your app, run the following command at the root of your `web` app:
+### Prerequisites
+- Node.js v16+
+- PNPM v7+
+- Git
 
-```bash
-pnpm dlx shadcn@latest add button -c apps/web
+### Installation
+```powershell
+git clone https://github.com/Xjectro/turborepo-next.git
+cd turborepo-next
+pnpm install
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
-
-## Tailwind
-
-Your `tailwind.config.ts` and `globals.css` are already set up to use the components from the `ui` package.
-
-## Using components
-
-To use the components in your app, import them from the `ui` package.
-
-```tsx
-import { Button } from "@repo/ui/components/button";
+### Running the Development Server
+```powershell
+pnpm turbo run dev --filter=web
 ```
+
+Open your browser at http://localhost:3000
+
+### Building for Production
+```powershell
+pnpm turbo run build
+pnpm turbo run start --filter=web
+```
+
+## Contributing
+1. Fork the repository (https://github.com/Xjectro/turborepo-next/fork)
+2. Create a new branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'feat: add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENCE) file for details.
