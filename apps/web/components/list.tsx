@@ -13,7 +13,7 @@ import {
   Skeleton,
   Container,
   List as ListComponent,
-} from "@xjectro/react/ui/components";
+} from "@xjectro/react/components";
 
 export function List() {
   const [title, setTitle] = React.useState("");

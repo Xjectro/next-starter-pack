@@ -8,7 +8,7 @@ import {
   selectValue,
 } from "@repo/utils/stores/counterSlice";
 
-import { Button, Text,Container } from "@xjectro/react/ui/components";
+import { Button, Text, Container } from "@xjectro/react/components";
 
 export function Counter() {
   const count = useAppSelector(selectValue);

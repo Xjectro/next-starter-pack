@@ -1,0 +1,17 @@
+networks:
+  network:
+    driver: bridge
+    external: false
+
+services:
+  turborepo-next:
+    container_name: dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.dev
+    networks:
+      - network

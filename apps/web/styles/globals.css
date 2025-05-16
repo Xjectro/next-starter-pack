@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@xjectro/react/theme.css";
+@import "@xjectro/react-shared/theme.css";
 @config "../tailwind.config.ts";
 
 @font-face {

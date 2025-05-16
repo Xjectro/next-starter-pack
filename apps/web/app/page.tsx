@@ -5,11 +5,11 @@ import { List } from "@/components/List";
 import { Page } from "@/components/Page";
 import { Counter } from "@/components/Counter";
 
-import { Separator } from "@xjectro/react/ui/components";
+import { Separator } from "@xjectro/react/components";
 
 export default function HomePage() {
   return (
-    <Page >
+    <Page>
       <Counter />
       <Separator />
       <List />

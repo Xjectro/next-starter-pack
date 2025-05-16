@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import xjectroPreset from "@xjectro/react/tailwind.preset";
+import xjectroPreset from "@xjectro/react-shared/tailwind.preset";
 
 const config: Config = {
   content: ["./**/*.{html,js,ts,jsx,tsx}"],

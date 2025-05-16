@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "clients",
+      name: "apps",
       script: "pnpm run start",
     },
   ],

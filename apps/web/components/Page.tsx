@@ -3,8 +3,8 @@ import React from "react";
 import Link from "next/link";
 import { EllipsisVerticalIcon } from "lucide-react";
 
-import { cn } from "@xjectro/react/ui/lib";
-import { useTheme } from "@xjectro/react/ui/hooks";
+import { cn } from "@xjectro/react/lib";
+import { useTheme } from "next-themes";
 import {
   Button,
   Navbar,
@@ -23,7 +23,7 @@ import {
   DropdownMenuTrigger,
   Container,
   ContainerProps,
-} from "@xjectro/react/ui/components";
+} from "@xjectro/react/components";
 
 export function DefaultNavbar() {
   const { setTheme, themes, theme } = useTheme();
@@ -97,9 +97,17 @@ export function Page({
   const NavbarComponent = navbar || DefaultNavbar;
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex w-full flex-col items-center">
       <NavbarComponent />
-      <Container direction="vertical" align="start" layout="main" spacing="xl" as="main" className={cn("w-full mt-36 pb-24", className)} {...props} />
+      <Container
+        direction="vertical"
+        align="start"
+        layout="main"
+        spacing="xl"
+        as="main"
+        className={cn("mt-36 w-full pb-24", className)}
+        {...props}
+      />
     </div>
   );
 }
