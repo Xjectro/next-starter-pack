@@ -10,8 +10,7 @@
     "lint": "turbo lint",
     "check-types": "turbo check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md,css,json,js,mjs}\"",
-    "docker:dev": "docker compose --verbose -f docker-compose.dev.yml down && docker compose --verbose -f docker-compose.dev.yml up --build",
-    "docker:prod": "docker compose --verbose -f docker-compose.prod.yml down && docker compose --verbose -f docker-compose.prod.yml up --build"
+    "docker": "docker compose --verbose -f docker-compose.yml down && docker compose --verbose -f docker-compose.yml up --build"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -27,9 +26,9 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@xjectro/react": "^1.0.92",
-    "@xjectro/react-shared": "^1.0.90",
-    "@xjectro/react-utils": "^1.0.88",
+    "@xjectro/react": "^1.1.1",
+    "@xjectro/react-shared": "^1.1.1",
+    "@xjectro/react-utils": "^1.1.1",
     "deloyn": "^1.0.10",
     "dotenv-cli": "^8.0.0"
   },
