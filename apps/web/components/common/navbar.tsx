@@ -10,7 +10,7 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@xjectro/react/components/navbar";
-import { Text } from "@xjectro/react/components/text";
+import { Typography } from "@xjectro/react/components/typography";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,7 +37,7 @@ export function Navbar() {
       <NavbarContent justify="start">
         <NavbarItem>
           <Link href="/">
-            <Text
+            <Typography
               color="primary"
               variant="shiny"
               as="h1"
@@ -45,7 +45,7 @@ export function Navbar() {
               size="2xl"
             >
               {process.env.NEXT_PUBLIC_APP_TITLE}
-            </Text>
+            </Typography>
           </Link>
         </NavbarItem>
       </NavbarContent>

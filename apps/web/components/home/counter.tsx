@@ -9,7 +9,7 @@ import {
 } from "@repo/utils/stores/counter-slice";
 
 import { Button } from "@xjectro/react/components/button";
-import { Text } from "@xjectro/react/components/text";
+import { Typography } from "@xjectro/react/components/typography";
 import { Container } from "@xjectro/react/components/container";
 
 export function Counter() {
@@ -18,9 +18,9 @@ export function Counter() {
 
   return (
     <Container direction="vertical" spacing="xl" className="w-full">
-      <Text variant="shiny" color="primary" size="4xl">
+      <Typography variant="shiny" color="primary" size="4xl" as="h2">
         {count}
-      </Text>
+      </Typography>
       <Container direction="horizontal" spacing="xl" as="span">
         <Button size="lg" onClick={() => dispatch(incrementAsync(10))}>
           Increment Async

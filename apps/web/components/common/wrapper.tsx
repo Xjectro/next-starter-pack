@@ -20,7 +20,7 @@ export function CommonWrapper({ className, ...props }: ContainerProps) {
       <Container
         direction="vertical"
         align="start"
-        layout="main"
+        layout="wide"
         spacing="xl"
         as="main"
         className={cn("mt-36 w-full pb-24", className)}
