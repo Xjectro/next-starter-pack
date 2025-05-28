@@ -1,5 +1,28 @@
-node_modules/
-dist/
+# Dependencies
+node_modules
+.pnp
+.pnp.js
 pnpm-lock.yaml
-.turbo/
-.github/
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Build Outputs
+.next/
+out/
+build
+dist
+
+
+# Debug
+npm-debug.log*
+
+# Misc
+.DS_Store
+*.pem

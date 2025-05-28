@@ -16,7 +16,7 @@ function isHydrateAction(action: Action): action is PayloadAction<RootState> {
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.SERVER_URL || "http://localhost:3000",
+    baseUrl: process.env.NEXT_PUBLIC_SERVER_URL!,
   }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (isHydrateAction(action)) {

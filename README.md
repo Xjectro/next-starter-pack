@@ -1,25 +1,26 @@
-# 🚀 turborepo-next-redux
+# Next Starter Pack
 
-[![GitHub stars](https://img.shields.io/github/stars/Xjectro/turborepo-next-redux?style=social)](https://github.com/Xjectro/turborepo-next-redux)
-[![GitHub forks](https://img.shields.io/github/forks/Xjectro/turborepo-next-redux?style=social)](https://github.com/Xjectro/turborepo-next-redux/fork)
-[![License](https://img.shields.io/github/license/Xjectro/turborepo-next-redux)](./LICENCE)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENCE)
+[![Xjectro](https://img.shields.io/badge/author-Xjectro-blue)](https://github.com/Xjectro)
 
----
+A modern, scalable, and customizable Next.js monorepo starter pack with TypeScript, TurboRepo, pnpm, Tailwind CSS, and advanced state management. Built and maintained by [Xjectro](https://github.com/Xjectro).
 
-🌟 **Modern Monorepo: Next.js + Redux + Turborepo** 🌟
+## 🚀 Features
 
-This project is a scalable and modular monorepo example built with Next.js, Redux, Turborepo, and TailwindCSS.
+- **Next.js 15** for a modern web app foundation
+- **TurboRepo** for monorepo management and fast builds
+- **TypeScript** for type safety
+- **pnpm** for fast and efficient package management
+- **Tailwind CSS** for customizable themes and styles
+- **Redux Toolkit** and **Apollo Client** for advanced state management
+- **Component Library**: @xjectro/react, @xjectro/react-shared, @xjectro/react-utils
+- **Dark/Light Theme** support
+- **Docker** and **docker-compose** for easy development and deployment
+- **Deloyn** for automated server deployment
+- **ESLint + Prettier** for code quality and formatting
+- **Ready-to-use Counter and Post List examples**
 
-## ✨ Features
-
-- ⚡️ **Monorepo management** with Turborepo
-- 🏗️ **Modern web app** with Next.js
-- 🗃️ **Global state management** with Redux Toolkit
-- 🎨 **Fast and flexible styling** with TailwindCSS
-- 🧩 Modular structure (apps, packages)
-- 🐳 Docker support
-
-## 🚀 Quick Start
+## 📦 Installation
 
 ```bash
 # Install dependencies
@@ -27,37 +28,49 @@ pnpm install
 
 # Start the development server
 pnpm dev
+
+# Build the project
+pnpm build
+
+# Lint and type check
+pnpm lint
+pnpm check-types
 ```
 
-> Alternatively, to start with Docker:
->
-> ```bash
-> docker-compose up --build
-> ```
+## 🐳 Run with Docker
 
-## 📁 Folder Structure
-
-```
-.
-├── apps/
-│   └── web/           # Next.js app
-├── packages/
-│   ├── utils/         # Shared utilities and store
-│   ├── typescript-config/  # TS config packages
-│   └── eslint-config/ # ESLint config packages
-├── docker-compose.yml
-├── turbo.json
-└── ...
+```bash
+pnpm docker
 ```
 
-## 🤝 Contributing
+## ⚙️ Environment Variables
 
-Contributions are welcome! Please open an issue or submit a pull request.
+You can configure server and client settings using `.env.dev` and `.env.prod` files.
+
+## 🧩 Monorepo Structure
+
+- `apps/web` : Main Next.js application
+- `packages/utils` : Shared utilities, store, and services
+- `packages/eslint-config` : Shared ESLint configuration
+- `packages/typescript-config` : Shared TypeScript configuration
+
+## 🛠 Technologies Used
+
+- Next.js, React, TypeScript
+- TurboRepo, pnpm
+- Tailwind CSS
+- Redux Toolkit, Apollo Client
+- Docker, docker-compose
+- ESLint, Prettier
+
+## 👨‍💻 Contributing
+
+Feel free to fork and open a PR to contribute. Any suggestions and contributions are welcome!
 
 ## 📄 License
 
-This project is licensed under the [MIT License](./LICENCE).
+MIT License © 2025 [Xjectro](https://github.com/Xjectro)
 
 ---
 
-> GitHub: [Xjectro/turborepo-next-redux](https://github.com/Xjectro/turborepo-next-redux)
+Project URL: [https://github.com/Xjectro/next-starter-pack](https://github.com/Xjectro/next-starter-pack)

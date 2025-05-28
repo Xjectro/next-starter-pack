@@ -1,4 +1,4 @@
-import { Spinner } from '@xjectro/react/components/loaders';
+import { Spinner } from "@xjectro/react/components/loaders";
 
 export function PreloadPage() {
   return (

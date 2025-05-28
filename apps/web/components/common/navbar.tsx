@@ -4,10 +4,15 @@ import Link from "next/link";
 import { EllipsisVerticalIcon } from "lucide-react";
 
 import { useTheme } from "next-themes";
-import { Button } from "@xjectro/react/components/button"
-export { Navbar as NavbarRoot,NavbarContent,NavbarItem} from "@xjectro/react/components/navbar"
+import { Button } from "@xjectro/react/components/button";
+import {
+  Navbar as NavbarRoot,
+  NavbarContent,
+  NavbarItem,
+} from "@xjectro/react/components/navbar";
 import { Text } from "@xjectro/react/components/text";
-import {   DropdownMenu,
+import {
+  DropdownMenu,
   DropdownMenuContent,
   DropdownMenuPortal,
   DropdownMenuRadioGroup,
@@ -15,7 +20,8 @@ import {   DropdownMenu,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger,} from "@xjectro/react/components/dropdown-menu";
+  DropdownMenuTrigger,
+} from "@xjectro/react/components/dropdown-menu";
 
 export function Navbar() {
   const { setTheme, themes, theme } = useTheme();
@@ -31,7 +37,13 @@ export function Navbar() {
       <NavbarContent justify="start">
         <NavbarItem>
           <Link href="/">
-            <Text color="primary" variant="shiny" size="2xl">
+            <Text
+              color="primary"
+              variant="shiny"
+              as="h1"
+              weight="bold"
+              size="2xl"
+            >
               {process.env.NEXT_PUBLIC_APP_TITLE}
             </Text>
           </Link>

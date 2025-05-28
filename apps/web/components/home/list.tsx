@@ -6,9 +6,7 @@ import {
   useGetPostsQuery,
 } from "@repo/utils/services/api";
 
-import {
-  List as ListComponent,
-} from "@xjectro/react/components/list";
+import { List as ListComponent } from "@xjectro/react/components/list";
 import { Input } from "@xjectro/react/components/input";
 import { Button } from "@xjectro/react/components/button";
 import { Container } from "@xjectro/react/components/container";

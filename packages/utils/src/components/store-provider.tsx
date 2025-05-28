@@ -8,11 +8,7 @@ import {
   makeStore /** persistor */,
 } from "@repo/utils/stores/configure-store";
 
-export function StoreProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function StoreProvider({ children }: { children: React.ReactNode }) {
   const storeRef = React.useRef<AppStore>(undefined);
   if (!storeRef.current) {
     storeRef.current = makeStore();

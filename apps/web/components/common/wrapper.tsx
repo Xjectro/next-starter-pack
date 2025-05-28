@@ -1,83 +1,9 @@
 import React from "react";
 
-import Link from "next/link";
-import { EllipsisVerticalIcon } from "lucide-react";
-
-import { cn } from "@xjectro/react/lib";
-import { useTheme } from "next-themes";
-import {
-  Button,
-  Navbar,
-  NavbarContent,
-  NavbarItem,
-  Text,
-  Spinner,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuPortal,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-  Container,
-  ContainerProps,
-} from "@xjectro/react/components";
-
-export function DefaultNavbar() {
-  const { setTheme, themes, theme } = useTheme();
-
-  const themeKeys = {
-    dark: "Dark Mode",
-    light: "Light Mode",
-    system: "System Theme",
-  };
-
-  return (
-    <Navbar shouldHideOnScroll isBackground variant="floating">
-      <NavbarContent justify="start">
-        <NavbarItem>
-          <Link href="/">
-            <Text color="primary" variant="shiny" size="2xl">
-              {process.env.NEXT_PUBLIC_APP_TITLE}
-            </Text>
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <EllipsisVerticalIcon className="size-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>Theme Mode</DropdownMenuSubTrigger>
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent>
-                    <DropdownMenuRadioGroup
-                      value={theme}
-                      onValueChange={setTheme}
-                    >
-                      {themes.map((theme) => (
-                        <DropdownMenuRadioItem value={theme} key={theme}>
-                          {themeKeys[theme as "dark"]}
-                        </DropdownMenuRadioItem>
-                      ))}
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </NavbarItem>
-      </NavbarContent>
-    </Navbar>
-  );
-}
+import { Navbar } from "@/components/common/navbar";
+import { cn } from "@xjectro/react/lib/utils";
+import { Container, ContainerProps } from "@xjectro/react/components/container";
+import { Spinner } from "@xjectro/react/components/loaders";
 
 export function DefaultPreloadPage() {
   return (
@@ -87,18 +13,10 @@ export function DefaultPreloadPage() {
   );
 }
 
-export function CommonWrapper({
-  className,
-  navbar,
-  ...props
-}: {
-  navbar?: () => React.ReactNode;
-} & ContainerProps) {
-  const NavbarComponent = navbar || DefaultNavbar;
-
+export function CommonWrapper({ className, ...props }: ContainerProps) {
   return (
     <div className="flex w-full flex-col items-center">
-      <NavbarComponent />
+      <Navbar />
       <Container
         direction="vertical"
         align="start"
