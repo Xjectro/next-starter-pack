@@ -36,7 +36,7 @@
       "cache": false,
       "persistent": true
     },
-    "publish": {
+    "deploy": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "env": ["*"],

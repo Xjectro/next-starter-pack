@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
-import { Providers } from "@/components/Providers";
+import { Providers } from "@/components/providers";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -13,9 +13,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: {
     template: "%s | " + process.env.NEXT_PUBLIC_APP_TITLE,
-    default: process.env.NEXT_PUBLIC_APP_TITLE || "Next.js App",
+    default: process.env.NEXT_PUBLIC_APP_TITLE!,
   },
-  description: "Modern and high-performance web application",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
   ),

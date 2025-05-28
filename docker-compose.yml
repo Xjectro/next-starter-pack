@@ -1,10 +1,11 @@
+version: '4.0'
+
 networks:
-  network:
+  test_network:
     driver: bridge
-    external: false
 
 services:
-  turborepo-next:
+  test:
     container_name: development
     build:
       context: .
@@ -14,4 +15,5 @@ services:
     env_file:
       - .env.dev
     networks:
-      - network
+      - test_network
+    command: sh -c "pnpm run build && pnpm run start"

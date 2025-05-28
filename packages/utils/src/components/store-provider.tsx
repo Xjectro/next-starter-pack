@@ -6,9 +6,9 @@ import React from "react";
 import {
   AppStore,
   makeStore /** persistor */,
-} from "@repo/utils/stores/configureStore";
+} from "@repo/utils/stores/configure-store";
 
-export default function StoreProvider({
+export function StoreProvider({
   children,
 }: {
   children: React.ReactNode;

@@ -2,14 +2,15 @@
 
 import React from "react";
 
-import { StoreProvider } from "@repo/utils/components";
-import { DefaultPreloadPage } from "@/components/Page";
-import { StyleProvider, Toaster } from "@xjectro/react/components";
+import { StoreProvider } from "@repo/utils/components/store-provider";
+import { PreloadPage } from "@/components/common/preload-page";
+import { StyleProvider } from "@xjectro/react/components/style-provider";
+import { Toaster } from "@xjectro/react/components/sonner";
 import { ThemeProvider } from "next-themes";
 
 export function Providers({ children }: React.PropsWithChildren) {
   return (
-    <React.Suspense fallback={<DefaultPreloadPage />}>
+    <React.Suspense fallback={<PreloadPage />}>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"

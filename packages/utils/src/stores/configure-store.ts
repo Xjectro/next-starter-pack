@@ -1,5 +1,5 @@
 import { configureStore, combineSlices } from "@reduxjs/toolkit";
-import { counterSlice } from "@repo/utils/stores/counterSlice";
+import { counterSlice } from "@repo/utils/stores/counter-slice";
 import { api } from "@repo/utils/services/api";
 import { createWrapper } from "next-redux-wrapper";
 // import { persistStore } from "redux-persist";

@@ -1,12 +1,12 @@
 {
-  "name": "turborepo-next",
+  "name": "turborepo-next-redux",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "dotenv -e .env.prod -- turbo build",
     "dev": "dotenv -e .env.dev -- turbo dev",
     "start": "dotenv -e .env.prod -- turbo start",
-    "publish": "npx deloyn push",
+    "deploy": "npx deloyn push",
     "lint": "turbo lint",
     "check-types": "turbo check-types",
     "format": "prettier --write \"**/*.{ts,tsx,md,css,json,js,mjs}\"",
@@ -15,25 +15,25 @@
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@repo/utils": "workspace:*",
+    "@repo/utils": "workspace:*"
+  },
+  "dependencies": {
+    "@xjectro/react": "^1.1.32",
+    "@xjectro/react-shared": "^1.1.32",
+    "@xjectro/react-utils": "^1.1.32",
+    "deloyn": "^1.0.10",
+    "dotenv-cli": "^8.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "turbo": "^2.5.3",
     "typescript": "5.7.3"
   },
-  "packageManager": "pnpm@10.10.0",
-  "engines": {
-    "node": ">=20"
-  },
-  "dependencies": {
-    "@xjectro/react": "^1.1.1",
-    "@xjectro/react-shared": "^1.1.1",
-    "@xjectro/react-utils": "^1.1.1",
-    "deloyn": "^1.0.10",
-    "dotenv-cli": "^8.0.0"
-  },
   "resolutions": {
     "@types/react": "^18.0.0",
     "date-fns": "^2.28.0"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": ">=20"
   }
 }

@@ -87,7 +87,7 @@ export function DefaultPreloadPage() {
   );
 }
 
-export function Page({
+export function CommonWrapper({
   className,
   navbar,
   ...props

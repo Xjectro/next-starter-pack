@@ -7,13 +7,13 @@ import {
 } from "@repo/utils/services/api";
 
 import {
-  Separator,
-  Input,
-  Button,
-  Skeleton,
-  Container,
   List as ListComponent,
-} from "@xjectro/react/components";
+} from "@xjectro/react/components/list";
+import { Input } from "@xjectro/react/components/input";
+import { Button } from "@xjectro/react/components/button";
+import { Container } from "@xjectro/react/components/container";
+import { Separator } from "@xjectro/react/components/separator";
+import { Skeleton } from "@xjectro/react/components/skeleton";
 
 export function List() {
   const [title, setTitle] = React.useState("");

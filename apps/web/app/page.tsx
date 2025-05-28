@@ -1,18 +1,18 @@
 "use client";
 
 import * as React from "react";
-import { List } from "@/components/List";
-import { Page } from "@/components/Page";
-import { Counter } from "@/components/Counter";
+import { List } from "@/components/home/list";
+import { CommonWrapper} from "@/components/common/wrapper";
+import { Counter } from "@/components/home/counter";
 
-import { Separator } from "@xjectro/react/components";
+import { Separator } from "@xjectro/react/components/separator";
 
 export default function HomePage() {
   return (
-    <Page>
+    <CommonWrapper>
       <Counter />
       <Separator />
       <List />
-    </Page>
+    </CommonWrapper>
   );
 }

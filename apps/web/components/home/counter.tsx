@@ -6,9 +6,11 @@ import {
   incrementByAmount,
   incrementAsync,
   selectValue,
-} from "@repo/utils/stores/counterSlice";
+} from "@repo/utils/stores/counter-slice";
 
-import { Button, Text, Container } from "@xjectro/react/components";
+import { Button } from "@xjectro/react/components/button";
+import { Text } from "@xjectro/react/components/text";
+import { Container } from "@xjectro/react/components/container";
 
 export function Counter() {
   const count = useAppSelector(selectValue);

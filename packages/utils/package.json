@@ -12,9 +12,6 @@
   "exports": {
     "./services/*": "./src/services/*.ts",
     "./lib/*": "./src/lib/*.ts",
-    "./hooks": "./src/hooks/index.ts",
-    "./hooks/*": "./src/hooks/*.ts",
-    "./components": "./src/components/index.ts",
     "./components/*": "./src/components/*.tsx",
     "./stores/*": "./src/stores/*.ts"
   },
